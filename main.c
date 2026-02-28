@@ -6,7 +6,7 @@
 /*   By: jromann <jromann@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 15:21:15 by jromann           #+#    #+#             */
-/*   Updated: 2026/02/28 12:48:39 by jromann          ###   ########.fr       */
+/*   Updated: 2026/02/28 12:52:58 by jromann          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,40 +14,14 @@
 
 static void	intialise_data(t_user *user)
 {
-	// ft_memset(user, 0, sizeof(user));
+	ft_bzero(user, sizeof(t_user));
 	user->start_dir = 'D';
-	user->plane_vec.x = 0;
-	user->plane_vec.y = 0;
-	user->player_pos.x = 0;
-	user->player_pos.y = 0;
-	user->dir_vec.x = 0;
-	user->dir_vec.y = 0;
-	user->info = NULL;
-	user->map = NULL;
-	user->we_path = NULL;
-	user->so_path = NULL;
-	user->ea_path = NULL;
-	user->no_path = NULL;
 	user->floor.red = -1;
 	user->floor.blue = -1;
 	user->floor.green = -1;
 	user->ceiling.red = -1;
 	user->ceiling.blue = -1;
 	user->ceiling.green = -1;
-	user->n_tex.img = NULL;
-	user->s_tex.img = NULL;
-	user->w_tex.img = NULL;
-	user->e_tex.img = NULL;
-	user->img = NULL;
-	user->mlx_win = NULL;
-	user->mlx = NULL;
-	
-	user->vars.key_w = false;
-	user->vars.key_s = false;
-	user->vars.key_a = false;
-	user->vars.key_d = false;
-	user->vars.key_arr_l = false;
-	user->vars.key_arr_r = false;
 	user->vars.mouse_pos  = SCREEN_WIDTH / 2;
 }
 
