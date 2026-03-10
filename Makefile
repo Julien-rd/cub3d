@@ -1,4 +1,4 @@
-NAME = cub3d
+NAME = cub3D
 INC_DIR = includes
 CFLAGS = -Wall -Wextra -Werror -Ilibft -MMD -g -I$(INC_DIR)
 OBJ_DIR = obj
