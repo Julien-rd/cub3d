@@ -6,7 +6,7 @@
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 15:21:15 by jromann           #+#    #+#             */
-/*   Updated: 2026/03/10 11:42:54 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2026/03/10 11:52:24 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	open_window(t_user *user)
 	if(!user->mlx)
 		cleanup(user, ERROR, "Error\nmlx_init failed\n");
 	user->mlx_win = mlx_new_window(user->mlx, SCREEN_WIDTH, SCREEN_HEIGHT,
-			"cub3d");
+			"cub3D");
 	if(!user->mlx_win)
 		cleanup(user, ERROR, "Error\nmlx_new_window failed\n");
 	user->img = mlx_new_image(user->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
