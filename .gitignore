@@ -1,2 +1,4 @@
 obj/
 cub3D
+.gitignore
+.vscode
