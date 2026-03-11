@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: jromann <jromann@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 15:21:15 by jromann           #+#    #+#             */
-/*   Updated: 2026/03/10 12:28:45 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2026/03/11 13:04:50 by jromann          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,18 @@
 static void	open_window(t_user *user)
 {
 	user->mlx = mlx_init();
-	if(!user->mlx)
+	if (!user->mlx)
 		cleanup(user, ERROR, "Error\nmlx_init failed\n");
 	user->mlx_win = mlx_new_window(user->mlx, SCREEN_WIDTH, SCREEN_HEIGHT,
 			"cub3D");
-	if(!user->mlx_win)
+	if (!user->mlx_win)
 		cleanup(user, ERROR, "Error\nmlx_new_window failed\n");
 	user->img = mlx_new_image(user->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
-	if(!user->img)
+	if (!user->img)
 		cleanup(user, ERROR, "Error\nmlx_new_img failed\n");
 	user->image.img_data = mlx_get_data_addr(user->img, &user->image.bpp,
 			&user->image.size_line, &user->image.endian);
-	if(!user->image.img_data)
+	if (!user->image.img_data)
 		cleanup(user, ERROR, "Error\nmlx_get_data_addr nofailed\n");
 }
 
@@ -98,6 +98,33 @@ void	fill_spaces_with_walls(t_user *user)
 	}
 }
 
+int	game_loop(t_user *user)
+{
+	int mouse_zone;
+	
+	if (user->vars.key_w)
+		move_forward(user);
+	if (user->vars.key_s)
+		move_backward(user);
+	if (user->vars.key_a)
+		move_left(user);
+	if (user->vars.key_d)
+		move_right(user);
+	if (user->vars.key_arr_l)
+		rotate_left(user);
+	if (user->vars.key_arr_r)
+		rotate_right(user);
+	mouse_zone = SCREEN_WIDTH / 4;
+	if (user->vars.mouse_pos > SCREEN_WIDTH / 2 + mouse_zone)
+		rotate_right(user);
+	if (user->vars.mouse_pos < SCREEN_WIDTH / 2 - mouse_zone)
+		rotate_left(user);
+	ft_bzero(user->image.img_data, SCREEN_WIDTH * SCREEN_HEIGHT * 4);
+	draw_ray(user);
+	mlx_put_image_to_window(user->mlx, user->mlx_win, user->img, 0, 0);
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
 	t_user	user;
@@ -114,6 +141,7 @@ int	main(int argc, char **argv)
 	draw_ray(&user);
 	mlx_put_image_to_window(user.mlx, user.mlx_win, user.img, 0, 0);
 	set_up_hooks(&user);
+	mlx_loop_hook(user.mlx, game_loop, &user);
 	mlx_loop(user.mlx);
 	cleanup(&user, SUCCESS, NULL);
 	return (0);

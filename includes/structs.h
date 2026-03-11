@@ -6,12 +6,14 @@
 /*   By: jromann <jromann@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 15:19:39 by jromann           #+#    #+#             */
-/*   Updated: 2026/01/21 15:30:27 by jromann          ###   ########.fr       */
+/*   Updated: 2026/02/27 17:30:12 by jromann          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
 # define STRUCTS_H
+
+# include <stdbool.h>
 
 typedef struct s_rgb
 {
@@ -19,6 +21,17 @@ typedef struct s_rgb
 	int				green;
 	int				blue;
 }					t_rgb;
+
+typedef struct s_vars
+{
+	bool			key_w;
+	bool			key_s;
+	bool			key_a;
+	bool			key_d;
+	bool			key_arr_l;
+	bool			key_arr_r;
+	int				mouse_pos;
+}					t_vars;
 
 typedef struct s_vector
 {
@@ -97,6 +110,7 @@ typedef struct s_user
 	t_texture		e_tex;
 	void			*img;
 	t_image			image;
+	t_vars			vars;
 }					t_user;
 
 #endif

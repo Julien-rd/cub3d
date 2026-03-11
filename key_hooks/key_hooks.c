@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_hooks.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: jromann <jromann@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 13:54:43 by jromann           #+#    #+#             */
-/*   Updated: 2026/03/11 12:02:17 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2026/03/11 13:06:19 by jromann          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,35 +18,43 @@ static int	close_hook(t_user *user)
 	return (0);
 }
 
-static int	key_hook(int keycode, t_user *user)
+int mouse_hook(int x, int y, t_user *user)
 {
-	bool	moved;
+	(void)y;
+	user->vars.mouse_pos = x;
+    return (0);
+}
 
-	moved = 0;
+int mouse_left_win_hook(t_user *user)
+{
+	user->vars.mouse_pos = SCREEN_WIDTH / 2;
+	return (0);
+}
+
+static int	key_release_hook(int keycode, t_user *user)
+{
 	if (keycode == KEY_ESC)
 		cleanup(user, SUCCESS, NULL);
 	if (keycode == KEY_W)
-		move_forward(user, &moved);
+		user->vars.key_w = true;
 	if (keycode == KEY_S)
-		move_backward(user, &moved);
+		user->vars.key_s = true;
 	if (keycode == KEY_A)
-		move_left(user, &moved);
+		user->vars.key_a = true;
 	if (keycode == KEY_D)
-		move_right(user, &moved);
+		user->vars.key_d = true;
 	if (keycode == KEY_ARR_L)
-		rotate_left(user, &moved);
+		user->vars.key_arr_l = true;
 	if (keycode == KEY_ARR_R)
-		rotate_right(user, &moved);
-	if (moved)
-	{
-		draw_ray(user);
-		mlx_put_image_to_window(user->mlx, user->mlx_win, user->img, 0, 0);
-	}
+		user->vars.key_arr_r = true;
 	return (0);
 }
 
 void	set_up_hooks(t_user *user)
 {
-	mlx_hook(user->mlx_win, 2, 1L << 0, key_hook, user);
-	mlx_hook(user->mlx_win, 17, 1L << 17, close_hook, user);
+	mlx_hook(user->mlx_win, 6, 1L << 6, mouse_hook, user);
+	mlx_hook(user->mlx_win, 8, 1L << 5, mouse_left_win_hook, user);
+	// mlx_hook(user->mlx_win, 2, 1L << 0, key_press_hook, user);
+	mlx_hook(user->mlx_win, 3, 1L << 1, key_release_hook, user);
+	mlx_hook(user->mlx_win, 17, 0, close_hook, user);
 }

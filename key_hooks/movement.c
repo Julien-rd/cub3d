@@ -6,13 +6,13 @@
 /*   By: jromann <jromann@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 13:58:33 by jromann           #+#    #+#             */
-/*   Updated: 2026/02/02 18:52:33 by jromann          ###   ########.fr       */
+/*   Updated: 2026/02/27 17:31:32 by jromann          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void	move_forward(t_user *user, bool *flag)
+void	move_forward(t_user *user)
 {
 	double	new_x;
 	double	new_y;
@@ -23,11 +23,10 @@ void	move_forward(t_user *user, bool *flag)
 	{
 		user->player_pos.x = new_x;
 		user->player_pos.y = new_y;
-		*flag = true;
 	}
 }
 
-void	move_backward(t_user *user, bool *flag)
+void	move_backward(t_user *user)
 {
 	double	new_x;
 	double	new_y;
@@ -38,11 +37,10 @@ void	move_backward(t_user *user, bool *flag)
 	{
 		user->player_pos.x = new_x;
 		user->player_pos.y = new_y;
-		*flag = true;
 	}
 }
 
-void	move_left(t_user *user, bool *flag)
+void	move_left(t_user *user)
 {
 	double	new_x;
 	double	new_y;
@@ -53,11 +51,10 @@ void	move_left(t_user *user, bool *flag)
 	{
 		user->player_pos.x = new_x;
 		user->player_pos.y = new_y;
-		*flag = true;
 	}
 }
 
-void	move_right(t_user *user, bool *flag)
+void	move_right(t_user *user)
 {
 	double	new_x;
 	double	new_y;
@@ -68,6 +65,5 @@ void	move_right(t_user *user, bool *flag)
 	{
 		user->player_pos.x = new_x;
 		user->player_pos.y = new_y;
-		*flag = true;
 	}
 }
