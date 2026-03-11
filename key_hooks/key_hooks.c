@@ -6,7 +6,7 @@
 /*   By: jromann <jromann@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 13:54:43 by jromann           #+#    #+#             */
-/*   Updated: 2026/03/11 13:16:38 by jromann          ###   ########.fr       */
+/*   Updated: 2026/03/11 13:20:07 by jromann          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,23 @@ int mouse_left_win_hook(t_user *user)
 }
 
 static int	key_release_hook(int keycode, t_user *user)
+{
+	if (keycode == KEY_W)
+		user->vars.key_w = false;
+	if (keycode == KEY_S)
+		user->vars.key_s = false;
+	if (keycode == KEY_A)
+		user->vars.key_a = false;
+	if (keycode == KEY_D)
+		user->vars.key_d = false;
+	if (keycode == KEY_ARR_L)
+		user->vars.key_arr_l = false;
+	if (keycode == KEY_ARR_R)
+		user->vars.key_arr_r = false;
+	return (0);
+}
+
+static int	key_press_hook(int keycode, t_user *user)
 {
 	if (keycode == KEY_ESC)
 		cleanup(user, SUCCESS, NULL);
