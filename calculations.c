@@ -6,7 +6,7 @@
 /*   By: jromann <jromann@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 11:47:08 by jromann           #+#    #+#             */
-/*   Updated: 2026/02/02 18:53:59 by jromann          ###   ########.fr       */
+/*   Updated: 2026/03/01 19:08:21 by jromann          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -215,7 +215,7 @@ static void	draw_line(t_dda *ray, t_user *user, int screen_x)
 		y++;
 	}
 	y = 0;
-	while (y < draw_data.start)
+	while (y < draw_data.start && screen_x >= SCREEN_WIDTH)
 	{
 		ft_put_pixel(user->image, screen_x, y, user->ceiling_c);
 		y++;
@@ -263,6 +263,6 @@ void	draw_ray(t_user *user)
 	while (row < SCREEN_WIDTH)
 	{
 		calculate_ray(user, row);
-		row++;
+		++row;
 	}
 }
