@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+         #
+#    By: jromann <jromann@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/28 17:13:00 by vmanuyko          #+#    #+#              #
-#    Updated: 2026/02/26 12:46:24 by vmanuyko         ###   ########.fr        #
+#    Updated: 2026/03/11 13:09:26 by jromann          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,25 +30,23 @@ ft_get_next_line.c ft_get_next_line_utils.c ft_help.c ft_printf.c
 OBJ = $(SRC:%.c=obj/%.o)
 DEP = $(SRC:%.c=obj/%.d)
 
-.SILENT:
-
 all : $(NAME)
 
 $(NAME) : $(OBJ)
-	ar -rsc $@ $^
+	@ar -rsc $@ $^
 
 $(OBJ_DIR):
-	mkdir -p $(OBJ_DIR)
+	@mkdir -p $(OBJ_DIR)
 
 $(OBJ_DIR)/%.o: %.c | $(OBJ_DIR)
-	$(CC) -MMD -MP -MF $(@:.o=.d) -c $< -o $@
+	@$(CC) -MMD -MP -MF $(@:.o=.d) -c $< -o $@
 
 clean :
-	rm -f $(OBJ) $(DEP)
-	rm -rf $(OBJ_DIR)
+	@rm -f $(OBJ) $(DEP)
+	@rm -rf $(OBJ_DIR)
 
 fclean : clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re : fclean $(NAME)
 

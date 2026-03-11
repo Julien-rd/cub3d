@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: jromann <jromann@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 11:38:38 by vmanuyko          #+#    #+#             */
-/*   Updated: 2026/03/10 11:47:44 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2026/03/11 13:12:45 by jromann          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	intialise_data(t_user *user)
 {
-	ft_memset(user, 0, sizeof(t_user));
+	ft_bzero(user, sizeof(t_user));
 	user->start_dir = 'D';
 	user->floor.red = -1;
 	user->floor.blue = -1;
@@ -22,4 +22,5 @@ void	intialise_data(t_user *user)
 	user->ceiling.red = -1;
 	user->ceiling.blue = -1;
 	user->ceiling.green = -1;
+	user->vars.mouse_pos = SCREEN_WIDTH / 2;
 }
