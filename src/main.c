@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jromann <jromann@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 15:21:15 by jromann           #+#    #+#             */
-/*   Updated: 2026/03/12 08:36:29 by jromann          ###   ########.fr       */
+/*   Updated: 2026/03/12 17:52:01 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,4 @@ int	main(int argc, char **argv)
 	init_graphics(&user);
 	start_game(&user);
 	exit_game(&user, SUCCESS, NULL);
-	return (0);
 }

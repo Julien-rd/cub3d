@@ -6,7 +6,7 @@
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/12 08:26:56 by jromann           #+#    #+#             */
-/*   Updated: 2026/03/12 16:46:47 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2026/03/12 16:51:47 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,7 @@ int	game_loop(t_user *user)
 {
 	int	mouse_zone;
 
-	if (user->key.w)
-		move_forward(user);
-	if (user->key.s)
-		move_backward(user);
-	if (user->key.a)
-		move_left(user);
-	if (user->key.d)
-		move_right(user);
-	if (user->key.arr_l)
-		rotate_left(user);
-	if (user->key.arr_r)
-		rotate_right(user);
+	move_player(user);
 	mouse_zone = SCREEN_WIDTH / 4;
 	if (user->key.mouse_pos > SCREEN_WIDTH / 2 + mouse_zone)
 		rotate_right(user);

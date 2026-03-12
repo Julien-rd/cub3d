@@ -6,7 +6,7 @@
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 15:18:23 by jromann           #+#    #+#             */
-/*   Updated: 2026/03/12 16:39:45 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2026/03/12 17:21:02 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@
 # define ERROR 1
 # define PERROR 2
 
-# define MOVE_S 0.05
+# define MOVE_S 0.03
 # define ROT_S 0.01
 
 # define KEY_ESC 65307
@@ -91,10 +91,7 @@ void	validate_file_extension(char *file_name);
 bool	check_collision(t_user *user, double x, double y);
 
 // movement
-void	move_right(t_user *user);
-void	move_left(t_user *user);
-void	move_backward(t_user *user);
-void	move_forward(t_user *user);
+void	move_player(t_user *user);
 
 // rotation
 void	rotate_left(t_user *user);
