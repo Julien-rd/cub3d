@@ -6,7 +6,7 @@
 /*   By: jromann <jromann@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/12 08:26:56 by jromann           #+#    #+#             */
-/*   Updated: 2026/03/12 09:19:17 by jromann          ###   ########.fr       */
+/*   Updated: 2026/03/12 09:43:38 by jromann          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,9 @@ int	game_loop(t_user *user)
 }
 
 void start_game(t_user *user){
-    set_up_hooks(&user);
+	draw_ray(user);
+	mlx_put_image_to_window(user->mlx, user->mlx_win, user->img, 0, 0);
+    set_up_hooks(user);
 	mlx_loop_hook(user->mlx, game_loop, &user);
 	mlx_loop(user->mlx);
 }

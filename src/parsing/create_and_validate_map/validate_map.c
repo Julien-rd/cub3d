@@ -6,11 +6,11 @@
 /*   By: jromann <jromann@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:41:57 by jromann           #+#    #+#             */
-/*   Updated: 2026/02/02 18:53:47 by jromann          ###   ########.fr       */
+/*   Updated: 2026/03/12 09:41:17 by jromann          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "../../../includes/cub3d.h"
 
 static int	valid_char(char c)
 {
@@ -69,7 +69,7 @@ static void	player_start_pos(t_user *user, size_t pos, size_t iter)
 	}
 	user->player_pos.x = (double)iter + 0.5;
 	user->player_pos.y = (double)pos + 0.5;
-	calulate_plane_vector(&user->dir_vec, &user->plane_vec, RIGHT);
+	calculate_plane_vector(&user->dir_vec, &user->plane_vec, RIGHT);
 }
 
 static int	valid_line(t_user *user, size_t pos)
@@ -104,7 +104,7 @@ void	valid_map(t_user *user)
 	while (user->map[iter])
 	{
 		if (valid_line(user, iter) == 1)
-			cleanup(user, ERROR, "Error\nInvalid input !\n");
+			exit_game(user, ERROR, "Error\nInvalid input !\n");
 		iter++;
 	}
 }

@@ -6,11 +6,11 @@
 /*   By: jromann <jromann@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:30:19 by jromann           #+#    #+#             */
-/*   Updated: 2026/02/02 18:53:13 by jromann          ###   ########.fr       */
+/*   Updated: 2026/03/12 09:41:47 by jromann          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "../../../includes/cub3d.h"
 
 size_t	skip_spaces(char *str)
 {
@@ -42,7 +42,7 @@ void	parse_info(t_user *user)
 		else if (user->info[iter][skip_spaces(user->info[iter])] == '1')
 			return ;
 		else
-			cleanup(user, ERROR, "Error\nInvalid input !\n");
+			exit_game(user, ERROR, "Error\nInvalid input !\n");
 		iter++;
 	}
 }

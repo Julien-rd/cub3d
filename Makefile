@@ -3,13 +3,11 @@ INC_DIR = includes
 CFLAGS = -Wall -Wextra -Werror -Ilibft -MMD -g -I$(INC_DIR)
 OBJ_DIR = obj
 LDFLAGS = -L/usr/lib -lmlx -lXext -lX11 -lm -lz
-VPATH = src/parsing src/parsing/create_and_validate_map \
-parsing/parse_info helper key_hooks src/init src
+VPATH = src src/core src/init src/input src/parsing src/parsing/create_and_validate_map src/parsing/parse_info src/render
 
-SRC = main.c parse_input.c read_file_to_string.c color_info.c parse_info.c \
-wall_info.c create_and_validate_map.c validate_map.c create_map.c cleanup.c \
-calculations.c key_hooks.c movement.c movement_helpers.c rotations.c \
-init_data.c valid_file.c
+SRC = main.c cleanup.c start_game.c init_data.c init_mlx.c key_hooks.c set_up_hooks.c valid_file.c \
+      collision.c movement.c rotation.c parse_input.c read_file_to_string.c create_and_validate_map.c create_map.c validate_map.c \
+      color_info.c parse_info.c wall_info.c raycaster.c
 
 OBJ = $(SRC:%.c=obj/%.o)
 DEP = $(SRC:%.c=obj/%.d)

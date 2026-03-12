@@ -6,28 +6,28 @@
 /*   By: jromann <jromann@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/12 08:19:54 by jromann           #+#    #+#             */
-/*   Updated: 2026/03/12 08:33:05 by jromann          ###   ########.fr       */
+/*   Updated: 2026/03/12 09:38:43 by jromann          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/cub3d.h"
+#include "../includes/cub3d.h"
 
 static void	open_window(t_user *user)
 {
 	user->mlx = mlx_init();
 	if (!user->mlx)
-		cleanup(user, ERROR, "Error\nmlx_init failed\n");
+		exit_game(user, ERROR, "Error\nmlx_init failed\n");
 	user->mlx_win = mlx_new_window(user->mlx, SCREEN_WIDTH, SCREEN_HEIGHT,
 			"cub3D");
 	if (!user->mlx_win)
-		cleanup(user, ERROR, "Error\nmlx_new_window failed\n");
+		exit_game(user, ERROR, "Error\nmlx_new_window failed\n");
 	user->img = mlx_new_image(user->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
 	if (!user->img)
-		cleanup(user, ERROR, "Error\nmlx_new_img failed\n");
+		exit_game(user, ERROR, "Error\nmlx_new_img failed\n");
 	user->image.img_data = mlx_get_data_addr(user->img, &user->image.bpp,
 			&user->image.size_line, &user->image.endian);
 	if (!user->image.img_data)
-		cleanup(user, ERROR, "Error\nmlx_get_data_addr nofailed\n");
+		exit_game(user, ERROR, "Error\nmlx_get_data_addr nofailed\n");
 }
 
 static void	load_textures(t_user *user)
@@ -38,7 +38,7 @@ static void	load_textures(t_user *user)
 	user->n_tex.img = mlx_xpm_file_to_image(user->mlx, user->no_path, &width,
 			&height);
 	if (!user->n_tex.img)
-		cleanup(user, ERROR, "Error\nFailed to load north texture\n");
+		exit_game(user, ERROR, "Error\nFailed to load north texture\n");
 	user->n_tex.data = mlx_get_data_addr(user->n_tex.img, &user->n_tex.bpp,
 			&user->n_tex.line_len, &user->n_tex.endian);
 	user->n_tex.width = width;
@@ -46,7 +46,7 @@ static void	load_textures(t_user *user)
 	user->s_tex.img = mlx_xpm_file_to_image(user->mlx, user->so_path, &width,
 			&height);
 	if (!user->s_tex.img)
-		cleanup(user, ERROR, "Error\nFailed to load south texture\n");
+		exit_game(user, ERROR, "Error\nFailed to load south texture\n");
 	user->s_tex.data = mlx_get_data_addr(user->s_tex.img, &user->s_tex.bpp,
 			&user->s_tex.line_len, &user->s_tex.endian);
 	user->s_tex.width = width;
@@ -54,7 +54,7 @@ static void	load_textures(t_user *user)
 	user->w_tex.img = mlx_xpm_file_to_image(user->mlx, user->we_path, &width,
 			&height);
 	if (!user->w_tex.img)
-		cleanup(user, ERROR, "Error\nFailed to load west texture\n");
+		exit_game(user, ERROR, "Error\nFailed to load west texture\n");
 	user->w_tex.data = mlx_get_data_addr(user->w_tex.img, &user->w_tex.bpp,
 			&user->w_tex.line_len, &user->w_tex.endian);
 	user->w_tex.width = width;
@@ -62,7 +62,7 @@ static void	load_textures(t_user *user)
 	user->e_tex.img = mlx_xpm_file_to_image(user->mlx, user->ea_path, &width,
 			&height);
 	if (!user->e_tex.img)
-		cleanup(user, ERROR, "Error\nFailed to load east texture\n");
+		exit_game(user, ERROR, "Error\nFailed to load east texture\n");
 	user->e_tex.data = mlx_get_data_addr(user->e_tex.img, &user->e_tex.bpp,
 			&user->e_tex.line_len, &user->e_tex.endian);
 	user->e_tex.width = width;

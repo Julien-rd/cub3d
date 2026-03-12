@@ -6,11 +6,11 @@
 /*   By: jromann <jromann@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:36:22 by jromann           #+#    #+#             */
-/*   Updated: 2026/02/02 18:53:33 by jromann          ###   ########.fr       */
+/*   Updated: 2026/03/12 09:40:07 by jromann          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "../../../includes/cub3d.h"
 
 static bool	is_empty_line(char *line)
 {
@@ -38,7 +38,7 @@ void	check_empty_lines(char *map, char *input, t_user *user)
 		else
 		{
 			if (empty_line == true)
-				return (free(input), cleanup(user, ERROR,
+				return (free(input), exit_game(user, ERROR,
 						"Error\nEmpty line in map !\n"));
 		}
 		while (map[iter] != '\n' && map[iter])
@@ -69,6 +69,6 @@ size_t	map_exists(char *input, t_user *user)
 			iter++;
 	}
 	free(input);
-	cleanup(user, ERROR, "Error\nNo map found !\n");
+	exit_game(user, ERROR, "Error\nNo map found !\n");
 	return (0);
 }

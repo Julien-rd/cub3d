@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   calculations.c                                     :+:      :+:    :+:   */
+/*   raycaster.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jromann <jromann@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 11:47:08 by jromann           #+#    #+#             */
-/*   Updated: 2026/03/01 19:08:21 by jromann          ###   ########.fr       */
+/*   Updated: 2026/03/12 09:41:57 by jromann          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/cub3d.h"
+#include "../includes/cub3d.h"
 
-void	calulate_plane_vector(t_vector *dir, t_vector *plane, int flag)
+void	calculate_plane_vector(t_vector *dir, t_vector *plane, int flag)
 {
 	if (flag == LEFT)
 	{

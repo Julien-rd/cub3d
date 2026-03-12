@@ -6,7 +6,7 @@
 /*   By: jromann <jromann@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 15:18:23 by jromann           #+#    #+#             */
-/*   Updated: 2026/03/12 09:32:01 by jromann          ###   ########.fr       */
+/*   Updated: 2026/03/12 09:41:27 by jromann          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@
 
 //*************** CORE **************//
 
-//cleanup
+//exit_game
 void	exit_game(t_user *user, int flag, char *msg);
 void	cleanup_mlx(t_user *user);
 void	free2d(char **str);
@@ -134,5 +134,6 @@ char	*read_file_to_string(char *file_name);
 
 //raycaster
 void	draw_ray(t_user *user);
+void	calculate_plane_vector(t_vector *dir, t_vector *plane, int flag);
 
 #endif

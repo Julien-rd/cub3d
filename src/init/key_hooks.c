@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_up_hooks.c                                     :+:      :+:    :+:   */
+/*   key_hooks.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jromann <jromann@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/12 09:21:37 by jromann           #+#    #+#             */
-/*   Updated: 2026/03/12 09:21:52 by jromann          ###   ########.fr       */
+/*   Updated: 2026/03/12 09:38:43 by jromann          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	close_hook(t_user *user)
 {
-	cleanup(user, SUCCESS, NULL);
+	exit_game(user, SUCCESS, NULL);
 	return (0);
 }
 
@@ -51,7 +51,7 @@ int	key_release_hook(int keycode, t_user *user)
 int	key_press_hook(int keycode, t_user *user)
 {
 	if (keycode == KEY_ESC)
-		cleanup(user, SUCCESS, NULL);
+		exit_game(user, SUCCESS, NULL);
 	if (keycode == KEY_W)
 		user->vars.key_w = true;
 	if (keycode == KEY_S)

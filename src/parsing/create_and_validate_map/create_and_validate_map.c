@@ -6,11 +6,11 @@
 /*   By: jromann <jromann@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:56:37 by jromann           #+#    #+#             */
-/*   Updated: 2026/02/02 18:53:27 by jromann          ###   ########.fr       */
+/*   Updated: 2026/03/12 09:39:56 by jromann          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "../../../includes/cub3d.h"
 
 void	create_and_validate_map(char *input, t_user *user)
 {
@@ -22,6 +22,6 @@ void	create_and_validate_map(char *input, t_user *user)
 	user->map = ft_split(&input[iter], '\n');
 	free(input);
 	if (user->map == NULL || user->info == NULL)
-		cleanup(user, PERROR, "create_and_validate_map");
+		exit_game(user, PERROR, "create_and_validate_map");
 	valid_map(user);
 }

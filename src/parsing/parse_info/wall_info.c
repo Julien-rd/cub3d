@@ -6,11 +6,11 @@
 /*   By: jromann <jromann@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 17:02:58 by jromann           #+#    #+#             */
-/*   Updated: 2026/02/02 18:53:19 by jromann          ###   ########.fr       */
+/*   Updated: 2026/03/12 09:41:51 by jromann          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "../../../includes/cub3d.h"
 
 void	check_extensions(t_user *user, char *path)
 {
@@ -18,9 +18,9 @@ void	check_extensions(t_user *user, char *path)
 
 	len = ft_strlen(path);
 	if (len < 5)
-		cleanup(user, ERROR, "Error\nWrong path extension!\n");
+		exit_game(user, ERROR, "Error\nWrong path extension!\n");
 	if (ft_strncmp(".xpm", &path[len - 4], 4) != 0)
-		cleanup(user, ERROR, "Error\nWrong path extension!\n");
+		exit_game(user, ERROR, "Error\nWrong path extension!\n");
 }
 
 void	extract_line(t_user *user, size_t pos)
