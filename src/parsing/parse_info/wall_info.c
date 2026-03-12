@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   wall_info.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jromann <jromann@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 17:02:58 by jromann           #+#    #+#             */
-/*   Updated: 2026/02/02 18:53:19 by jromann          ###   ########.fr       */
+/*   Updated: 2026/03/12 15:57:15 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "../../../includes/cub3d.h"
 
 void	check_extensions(t_user *user, char *path)
 {
@@ -18,9 +18,9 @@ void	check_extensions(t_user *user, char *path)
 
 	len = ft_strlen(path);
 	if (len < 5)
-		cleanup(user, ERROR, "Error\nWrong path extension!\n");
+		exit_game(user, ERROR, "Error\nWrong path extension!");
 	if (ft_strncmp(".xpm", &path[len - 4], 4) != 0)
-		cleanup(user, ERROR, "Error\nWrong path extension!\n");
+		exit_game(user, ERROR, "Error\nWrong path extension!");
 }
 
 void	extract_line(t_user *user, size_t pos)
@@ -37,11 +37,11 @@ void	extract_line(t_user *user, size_t pos)
 	user->info[pos][end + 1] = '\0';
 	check_extensions(user, &user->info[pos][start]);
 	if (user->info[pos][0] == 'N')
-		user->no_path = &user->info[pos][start];
+		user->path.no = &user->info[pos][start];
 	if (user->info[pos][0] == 'S')
-		user->so_path = &user->info[pos][start];
+		user->path.so = &user->info[pos][start];
 	if (user->info[pos][0] == 'W')
-		user->we_path = &user->info[pos][start];
+		user->path.we = &user->info[pos][start];
 	if (user->info[pos][0] == 'E')
-		user->ea_path = &user->info[pos][start];
+		user->path.ea = &user->info[pos][start];
 }

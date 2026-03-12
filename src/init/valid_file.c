@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   valid_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jromann <jromann@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 12:29:29 by vmanuyko          #+#    #+#             */
-/*   Updated: 2026/03/11 13:07:32 by jromann          ###   ########.fr       */
+/*   Updated: 2026/03/12 14:25:47 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void	error_exit(char *mes)
+static void	error_exit(char *mes)
 {
 	ft_putendl_fd(mes, 2);
 	exit(1);
@@ -21,7 +21,7 @@ void	error_exit(char *mes)
 void	validate_file_extension(char *file_name)
 {
 	char	*ret;
-	
+
 	ret = ft_strnstr(file_name, ".cub", ft_strlen(file_name));
 	if (!ret)
 		error_exit("Error\ninvalid input format");

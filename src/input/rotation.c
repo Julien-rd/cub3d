@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotations.c                                        :+:      :+:    :+:   */
+/*   rotation.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jromann <jromann@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 14:13:14 by jromann           #+#    #+#             */
-/*   Updated: 2026/02/28 12:51:24 by jromann          ###   ########.fr       */
+/*   Updated: 2026/03/12 10:10:08 by jromann          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	rotate_right(t_user *user)
 	double	dir_x;
 	double	plane_x;
 	double	len;
-	
+
 	dir_x = user->dir_vec.x;
 	plane_x = user->plane_vec.x;
 	user->dir_vec.x = user->dir_vec.x * cos(ROT_S) - user->dir_vec.y

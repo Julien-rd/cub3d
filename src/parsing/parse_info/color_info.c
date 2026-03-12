@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   color_info.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jromann <jromann@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 17:01:41 by jromann           #+#    #+#             */
-/*   Updated: 2026/02/02 19:06:24 by jromann          ###   ########.fr       */
+/*   Updated: 2026/03/12 15:58:17 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "../../../includes/cub3d.h"
 
 static void	check_2dlen(t_user *user, char **colors)
 {
@@ -20,8 +20,8 @@ static void	check_2dlen(t_user *user, char **colors)
 	while (colors[iter])
 		iter++;
 	if (iter != 3)
-		return (free2d(colors), cleanup(user, ERROR,
-				"Error\nInvalid input !\n"));
+		return (free2d(colors), exit_game(user, ERROR,
+				"Error\nInvalid input!"));
 }
 
 static char	**prepare_color_info(t_user *user, size_t pos)
@@ -33,16 +33,16 @@ static char	**prepare_color_info(t_user *user, size_t pos)
 	iter = 0;
 	colors = ft_split(&user->info[pos][1], ',');
 	if (!colors)
-		cleanup(user, PERROR, "color_info");
+		exit_game(user, PERROR, "color_info");
 	check_2dlen(user, colors);
 	trim_colors = (char **)ft_calloc(sizeof(char *), 4);
 	if (!trim_colors)
-		return (free2d(colors), cleanup(user, PERROR, "color_info"), NULL);
+		return (free2d(colors), exit_game(user, PERROR, "color_info"), NULL);
 	while (colors[iter])
 	{
 		trim_colors[iter] = ft_strtrim(colors[iter], " ");
 		if (!trim_colors[iter])
-			return (free2d(trim_colors), free2d(colors), cleanup(user, PERROR,
+			return (free2d(trim_colors), free2d(colors), exit_game(user, PERROR,
 					"color_info"), NULL);
 		iter++;
 	}
@@ -58,14 +58,14 @@ static void	validate_colors(t_user *user, char **colors)
 	while (colors[row])
 	{
 		if (ft_strlen(colors[row]) > 3)
-			return (free2d(colors), cleanup(user, ERROR,
+			return (free2d(colors), exit_game(user, ERROR,
 					"Error\nInvalid input !\n"));
 		col = 0;
 		while (colors[row][col])
 		{
 			if (!ft_isdigit(colors[row][col]))
-				return (free2d(colors), cleanup(user, ERROR,
-						"Error\nInvalid input !\n"));
+				return (free2d(colors), exit_game(user, ERROR,
+						"Error\nInvalid input!"));
 			col++;
 		}
 		row++;
@@ -81,8 +81,8 @@ static void	convert_colors(t_user *user, char **colors, char flag)
 		user->floor.blue = ft_atoi(colors[2]);
 		if (user->floor.red == -1 || user->floor.blue == -1
 			|| user->floor.green == -1)
-			return (free2d(colors), cleanup(user, ERROR,
-					"Error\nInvalid input !\n"));
+			return (free2d(colors), exit_game(user, ERROR,
+					"Error\nInvalid input!"));
 	}
 	if (flag == 'C')
 	{
@@ -91,8 +91,8 @@ static void	convert_colors(t_user *user, char **colors, char flag)
 		user->ceiling.blue = ft_atoi(colors[2]);
 		if (user->ceiling.red == -1 || user->ceiling.blue == -1
 			|| user->ceiling.green == -1)
-			return (free2d(colors), cleanup(user, ERROR,
-					"Error\nInvalid input !\n"));
+			return (free2d(colors), exit_game(user, ERROR,
+					"Error\nInvalid input!"));
 	}
 }
 

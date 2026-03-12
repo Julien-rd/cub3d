@@ -6,13 +6,13 @@
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 11:38:38 by vmanuyko          #+#    #+#             */
-/*   Updated: 2026/03/11 16:30:02 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2026/03/12 16:41:03 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void	intialise_data(t_user *user)
+void	init_data(t_user *user)
 {
 	ft_bzero(user, sizeof(t_user));
 	user->start_dir = 'D';

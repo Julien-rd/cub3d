@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse_info.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jromann <jromann@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:30:19 by jromann           #+#    #+#             */
-/*   Updated: 2026/02/02 18:53:13 by jromann          ###   ########.fr       */
+/*   Updated: 2026/03/12 15:57:08 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "../../../includes/cub3d.h"
 
 size_t	skip_spaces(char *str)
 {
@@ -29,11 +29,11 @@ void	parse_info(t_user *user)
 	iter = 0;
 	while (user->info[iter])
 	{
-		if (((ft_strncmp("NO ", user->info[iter], 3) == 0) && (!user->no_path))
+		if (((ft_strncmp("NO ", user->info[iter], 3) == 0) && (!user->path.no))
 			|| ((ft_strncmp("SO ", user->info[iter], 3) == 0)
-				&& (!user->so_path)) || ((ft_strncmp("WE ", user->info[iter],
-						3) == 0) && (!user->we_path)) || ((ft_strncmp("EA ",
-						user->info[iter], 3) == 0) && (!user->ea_path)))
+				&& (!user->path.so)) || ((ft_strncmp("WE ", user->info[iter],
+						3) == 0) && (!user->path.we)) || ((ft_strncmp("EA ",
+						user->info[iter], 3) == 0) && (!user->path.ea)))
 			extract_line(user, iter);
 		else if ((ft_strncmp("F", user->info[iter], 1) == 0
 				&& user->floor.blue == -1) || (ft_strncmp("C", user->info[iter],
@@ -42,7 +42,7 @@ void	parse_info(t_user *user)
 		else if (user->info[iter][skip_spaces(user->info[iter])] == '1')
 			return ;
 		else
-			cleanup(user, ERROR, "Error\nInvalid input !\n");
+			exit_game(user, ERROR, "Error\nInvalid input!");
 		iter++;
 	}
 }

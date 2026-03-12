@@ -6,7 +6,7 @@
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:14:03 by jromann           #+#    #+#             */
-/*   Updated: 2026/03/10 11:53:36 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2026/03/12 15:26:11 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,16 @@ void	free2d(char **str)
 
 void	cleanup_mlx(t_user *user)
 {
-	if (user->n_tex.img)
-		mlx_destroy_image(user->mlx, user->n_tex.img);
-	if (user->s_tex.img)
-		mlx_destroy_image(user->mlx, user->s_tex.img);
-	if (user->w_tex.img)
-		mlx_destroy_image(user->mlx, user->w_tex.img);
-	if (user->e_tex.img)
-		mlx_destroy_image(user->mlx, user->e_tex.img);
-	if (user->img)
-		mlx_destroy_image(user->mlx, user->img);
+	if (user->tex.n.img)
+		mlx_destroy_image(user->mlx, user->tex.n.img);
+	if (user->tex.s.img)
+		mlx_destroy_image(user->mlx, user->tex.s.img);
+	if (user->tex.w.img)
+		mlx_destroy_image(user->mlx, user->tex.w.img);
+	if (user->tex.e.img)
+		mlx_destroy_image(user->mlx, user->tex.e.img);
+	if (user->tex.img.img)
+		mlx_destroy_image(user->mlx, user->tex.img.img);
 	if (user->mlx_win)
 		mlx_destroy_window(user->mlx, user->mlx_win);
 	if (user->mlx)
@@ -48,7 +48,7 @@ void	cleanup_mlx(t_user *user)
 	}
 }
 
-void	cleanup(t_user *user, int flag, char *msg)
+void	exit_game(t_user *user, int flag, char *msg)
 {
 	cleanup_mlx(user);
 	free2d(user->info);

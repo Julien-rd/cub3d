@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   create_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jromann <jromann@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:36:22 by jromann           #+#    #+#             */
-/*   Updated: 2026/02/02 18:53:33 by jromann          ###   ########.fr       */
+/*   Updated: 2026/03/12 15:55:21 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "../../../includes/cub3d.h"
 
 static bool	is_empty_line(char *line)
 {
@@ -38,8 +38,8 @@ void	check_empty_lines(char *map, char *input, t_user *user)
 		else
 		{
 			if (empty_line == true)
-				return (free(input), cleanup(user, ERROR,
-						"Error\nEmpty line in map !\n"));
+				return (free(input), exit_game(user, ERROR,
+						"Error\nEmpty line in map!"));
 		}
 		while (map[iter] != '\n' && map[iter])
 			iter++;
@@ -69,6 +69,6 @@ size_t	map_exists(char *input, t_user *user)
 			iter++;
 	}
 	free(input);
-	cleanup(user, ERROR, "Error\nNo map found !\n");
+	exit_game(user, ERROR, "Error\nNo map found!");
 	return (0);
 }
