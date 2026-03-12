@@ -6,7 +6,7 @@
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 15:19:39 by jromann           #+#    #+#             */
-/*   Updated: 2026/03/12 16:40:45 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2026/03/12 16:41:54 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ typedef struct s_user
 	t_texture		e_tex;
 	void			*img;
 	t_image			image;
-	t_keys			vars;
+	t_keys			key;
 }					t_user;
 
 #endif
