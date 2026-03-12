@@ -6,7 +6,7 @@
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 15:19:39 by jromann           #+#    #+#             */
-/*   Updated: 2026/03/12 15:31:59 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2026/03/12 15:35:25 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ typedef struct s_vars
 	int				mouse_pos;
 }	t_vars;
 
-typedef struct s_vector
+typedef struct s_coord
 {
 	double			x;
 	double			y;
-}	t_vector;
+}	t_coord;
 
 typedef struct s_image
 {
@@ -100,9 +100,9 @@ typedef struct s_path
 typedef struct s_user
 {
 	char			start_dir;
-	t_vector		player_pos;
-	t_vector		dir_vec;
-	t_vector		plane_vec;
+	t_coord			player_pos;
+	t_coord			dir_vec;
+	t_coord			plane_vec;
 	char			**map;
 	char			**info;
 	t_path			path;

@@ -6,7 +6,7 @@
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 15:18:23 by jromann           #+#    #+#             */
-/*   Updated: 2026/03/12 13:43:31 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2026/03/12 15:34:48 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,6 @@ char	*read_file_to_string(char *file_name);
 
 // raycaster
 void	draw_ray(t_user *user);
-void	calculate_plane_vector(t_vector *dir, t_vector *plane, int flag);
+void	calculate_plane_vector(t_coord *dir, t_coord *plane, int flag);
 
 #endif

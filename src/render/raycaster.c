@@ -6,13 +6,13 @@
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 11:47:08 by jromann           #+#    #+#             */
-/*   Updated: 2026/03/12 15:30:42 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2026/03/12 15:34:48 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void	calculate_plane_vector(t_vector *dir, t_vector *plane, int flag)
+void	calculate_plane_vector(t_coord *dir, t_coord *plane, int flag)
 {
 	if (flag == LEFT)
 	{
