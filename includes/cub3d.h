@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: jromann <jromann@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 15:18:23 by jromann           #+#    #+#             */
-/*   Updated: 2026/03/12 15:34:48 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2026/03/12 16:47:25 by jromann          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,7 @@ void	color_info(t_user *user, char flag, size_t pos);
 // parse_info/parse_info
 void	parse_info(t_user *user);
 size_t	skip_spaces(char *str);
+int     s_atoi(const char *str);
 
 // parse_info/wall_info
 void	extract_line(t_user *user, size_t pos);

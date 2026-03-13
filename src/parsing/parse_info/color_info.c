@@ -6,7 +6,7 @@
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 17:01:41 by jromann           #+#    #+#             */
-/*   Updated: 2026/03/12 15:58:17 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2026/03/13 11:38:56 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static void	validate_colors(t_user *user, char **colors)
 	{
 		if (ft_strlen(colors[row]) > 3)
 			return (free2d(colors), exit_game(user, ERROR,
-					"Error\nInvalid input !\n"));
+					"Error\nInvalid input!"));
 		col = 0;
 		while (colors[row][col])
 		{
@@ -76,9 +76,9 @@ static void	convert_colors(t_user *user, char **colors, char flag)
 {
 	if (flag == 'F')
 	{
-		user->floor.red = ft_atoi(colors[0]);
-		user->floor.green = ft_atoi(colors[1]);
-		user->floor.blue = ft_atoi(colors[2]);
+		user->floor.red = s_atoi(colors[0]);
+		user->floor.green = s_atoi(colors[1]);
+		user->floor.blue = s_atoi(colors[2]);
 		if (user->floor.red == -1 || user->floor.blue == -1
 			|| user->floor.green == -1)
 			return (free2d(colors), exit_game(user, ERROR,
@@ -86,9 +86,9 @@ static void	convert_colors(t_user *user, char **colors, char flag)
 	}
 	if (flag == 'C')
 	{
-		user->ceiling.red = ft_atoi(colors[0]);
-		user->ceiling.green = ft_atoi(colors[1]);
-		user->ceiling.blue = ft_atoi(colors[2]);
+		user->ceiling.red = s_atoi(colors[0]);
+		user->ceiling.green = s_atoi(colors[1]);
+		user->ceiling.blue = s_atoi(colors[2]);
 		if (user->ceiling.red == -1 || user->ceiling.blue == -1
 			|| user->ceiling.green == -1)
 			return (free2d(colors), exit_game(user, ERROR,
