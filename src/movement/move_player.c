@@ -6,7 +6,7 @@
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/12 16:35:18 by vmanuyko          #+#    #+#             */
-/*   Updated: 2026/03/13 13:39:06 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2026/03/13 15:55:48 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,15 @@ void	move_player(t_user *user)
 {
 	double	new_x;
 	double	new_y;
-	double	dir_x;
-	double	dir_y;
+	double	move_forward;
+	double	move_right;
 
-	dir_x = user->key.w - user->key.s;
-	dir_y = user->key.d - user->key.a;
-	new_x = user->player_pos.x + (dir_x * user->dir_vec.x * MOVE_S);
-	new_x += (dir_y * user->plane_vec.x * MOVE_S);
-	new_y = user->player_pos.y + (dir_x * user->dir_vec.y  * MOVE_S);
-	new_y += (dir_y * user->plane_vec.y * MOVE_S);
+	move_forward = user->key.w - user->key.s;
+	move_right = user->key.d - user->key.a;
+	new_x = user->player_pos.x + (move_forward * user->dir_vec.x * MOVE_S);
+	new_x += (move_right * user->plane_vec.x * MOVE_S);
+	new_y = user->player_pos.y + (move_forward * user->dir_vec.y  * MOVE_S);
+	new_y += (move_right * user->plane_vec.y * MOVE_S);
 	if (!check_collision(user, new_x, user->player_pos.y))
 		user->player_pos.x = new_x;
 	if (!check_collision(user, user->player_pos.x, new_y))
