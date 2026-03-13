@@ -7,7 +7,7 @@ VPATH = src src/core src/init src/movement src/parsing \
 	src/parsing/create_and_validate_map src/parsing/parse_info src/render
 
 SRC = main.c cleanup.c start_game.c init_data.c init_mlx.c key_hooks.c \
-	set_up_hooks.c valid_file.c collision.c movement.c rotation.c \
+	set_up_hooks.c valid_file.c collision.c rotation.c \
 	parse_input.c read_file_to_string.c create_and_validate_map.c \
 	create_map.c validate_map.c color_info.c parse_info.c wall_info.c \
 	raycaster.c s_atoi.c move_player.c
