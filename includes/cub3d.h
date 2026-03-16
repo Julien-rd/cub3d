@@ -6,7 +6,7 @@
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 15:18:23 by jromann           #+#    #+#             */
-/*   Updated: 2026/03/16 16:34:02 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2026/03/16 16:36:53 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,6 @@
 # define WALL 49
 # define SCREEN_WIDTH 800
 # define SCREEN_HEIGHT 600
-
-# define LEFT 0
-# define RIGHT 1
 
 # define FLOOR 0
 # define CEILING 1
