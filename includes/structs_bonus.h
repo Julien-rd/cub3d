@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   structs.h                                          :+:      :+:    :+:   */
+/*   structs_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: jromann <jromann@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 15:19:39 by jromann           #+#    #+#             */
-/*   Updated: 2026/03/12 15:35:25 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2026/03/17 11:36:55 by jromann          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ typedef struct s_texture
 	t_image			s;
 	t_image			w;
 	t_image			e;
+	t_image			d;
 	t_image			img;
 }	t_texture;
 
@@ -95,11 +96,13 @@ typedef struct s_path
 	char			*so;
 	char			*we;
 	char			*ea;
+	char			*dr;
 }	t_path;
 
 typedef struct s_user
 {
 	char			start_dir;
+	bool			door_present;
 	t_coord			player_pos;
 	t_coord			dir_vec;
 	t_coord			plane_vec;

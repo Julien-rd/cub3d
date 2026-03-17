@@ -6,7 +6,7 @@
 /*   By: jromann <jromann@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 17:02:58 by jromann           #+#    #+#             */
-/*   Updated: 2026/03/16 15:28:00 by jromann          ###   ########.fr       */
+/*   Updated: 2026/03/17 11:37:44 by jromann          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,6 @@ void	extract_line(t_user *user, size_t pos)
 		user->path.we = &user->info[pos][start];
 	if (user->info[pos][0] == 'E')
 		user->path.ea = &user->info[pos][start];
+	if (user->info[pos][0] == 'D')
+		user->path.dr = &user->info[pos][start];
 }

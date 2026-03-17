@@ -6,7 +6,7 @@
 /*   By: jromann <jromann@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 15:11:39 by jromann           #+#    #+#             */
-/*   Updated: 2026/03/16 15:27:40 by jromann          ###   ########.fr       */
+/*   Updated: 2026/03/17 11:37:13 by jromann          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,13 @@
 static void	final_check(t_user *user)
 {
 	if (user->path.we == NULL || user->path.so == NULL || user->path.ea == NULL
-		|| user->path.no == NULL)
+		|| user->path.no == NULL || (user->path.dr == NULL
+			&& user->door_present == true))
 		exit_game(user, ERROR, "Error\nNo path found!");
 	if (user->start_dir == 'R')
 		exit_game(user, ERROR, "Error\nNo direction found!");
-	if (user->floor.red == -1 || user->floor.blue == -1
-		|| user->floor.green == -1)
+	if (user->floor.red == -1 || user->floor.blue == -1 || user->floor.green ==
+		-1)
 		exit_game(user, ERROR, "Error\nNo color found!");
 	if (user->ceiling.red == -1 || user->ceiling.blue == -1
 		|| user->ceiling.green == -1)

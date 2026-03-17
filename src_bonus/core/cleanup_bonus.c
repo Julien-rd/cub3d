@@ -6,7 +6,7 @@
 /*   By: jromann <jromann@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:14:03 by jromann           #+#    #+#             */
-/*   Updated: 2026/03/16 15:26:37 by jromann          ###   ########.fr       */
+/*   Updated: 2026/03/17 11:27:01 by jromann          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ void	cleanup_mlx(t_user *user)
 		mlx_destroy_image(user->mlx, user->tex.w.img);
 	if (user->tex.e.img)
 		mlx_destroy_image(user->mlx, user->tex.e.img);
+	if (user->tex.d.img)
+		mlx_destroy_image(user->mlx, user->tex.d.img);
 	if (user->tex.img.img)
 		mlx_destroy_image(user->mlx, user->tex.img.img);
 	if (user->mlx_win)

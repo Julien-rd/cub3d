@@ -6,7 +6,7 @@
 /*   By: jromann <jromann@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:41:57 by jromann           #+#    #+#             */
-/*   Updated: 2026/03/16 15:27:52 by jromann          ###   ########.fr       */
+/*   Updated: 2026/03/17 11:33:09 by jromann          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ static void	player_start_pos(t_user *user, size_t pos, size_t iter)
 
 static int	is_a_valid_door(t_user *user, size_t pos, size_t iter)
 {
+	user->door_present = true;
 	if ((user->map[pos][iter + 1] == '0' && user->map[pos][iter - 1] == '0')
 		&& (user->map[pos + 1][iter] == '1' && user->map[pos - 1][iter] == '1'))
 		return (0);

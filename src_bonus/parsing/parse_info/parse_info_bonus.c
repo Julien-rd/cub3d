@@ -6,7 +6,7 @@
 /*   By: jromann <jromann@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:30:19 by jromann           #+#    #+#             */
-/*   Updated: 2026/03/16 15:27:57 by jromann          ###   ########.fr       */
+/*   Updated: 2026/03/17 11:37:35 by jromann          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,9 @@ void	parse_info(t_user *user)
 			|| ((ft_strncmp("SO ", user->info[iter], 3) == 0)
 				&& (!user->path.so)) || ((ft_strncmp("WE ", user->info[iter],
 						3) == 0) && (!user->path.we)) || ((ft_strncmp("EA ",
-						user->info[iter], 3) == 0) && (!user->path.ea)))
+						user->info[iter], 3) == 0) && (!user->path.ea))
+			|| ((ft_strncmp("DR ", user->info[iter], 3) == 0)
+				&& (!user->path.dr)))
 			extract_line(user, iter);
 		else if ((ft_strncmp("F", user->info[iter], 1) == 0
 				&& user->floor.blue == -1) || (ft_strncmp("C", user->info[iter],

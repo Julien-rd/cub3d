@@ -6,7 +6,7 @@
 /*   By: jromann <jromann@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/12 08:19:54 by jromann           #+#    #+#             */
-/*   Updated: 2026/03/16 15:27:06 by jromann          ###   ########.fr       */
+/*   Updated: 2026/03/17 11:37:06 by jromann          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	open_window(t_user *user)
 		exit_game(user, ERROR, "Error\nmlx_get_data_addr nofailed");
 }
 
-static void	load_textures(t_user *user)
+static void	load_textures_walls(t_user *user)
 {
 	user->tex.n.img = mlx_xpm_file_to_image(user->mlx, user->path.no,
 			&user->tex.n.width, &user->tex.n.height);
@@ -58,8 +58,21 @@ static void	load_textures(t_user *user)
 			&user->tex.e.line, &user->tex.e.endian);
 }
 
+static void	load_textures_door(t_user *user)
+{
+	if(user->door_present == false)
+		return ;
+	user->tex.d.img = mlx_xpm_file_to_image(user->mlx, user->path.dr,
+			&user->tex.d.width, &user->tex.d.height);
+	if (!user->tex.d.img)
+		exit_game(user, ERROR, "Error\nFailed to load door texture\n");
+	user->tex.d.data = mlx_get_data_addr(user->tex.d.img, &user->tex.d.bpp,
+			&user->tex.d.line, &user->tex.d.endian); //can this fail?
+}
+
 void	init_graphics(t_user *user)
 {
 	open_window(user);
-	load_textures(user);
+	load_textures_walls(user);
+	load_textures_door(user);
 }
