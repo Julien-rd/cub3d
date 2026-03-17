@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jromann <jromann@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 15:18:23 by jromann           #+#    #+#             */
-/*   Updated: 2026/03/12 16:47:25 by jromann          ###   ########.fr       */
+/*   Updated: 2026/03/16 13:31:57 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@
 # define ERROR 1
 # define PERROR 2
 
-# define MOVE_S 0.05
-# define ROT_S 0.03
+# define MOVE_S 0.03
+# define ROT_S 0.01
 
 # define KEY_ESC 65307
 # define KEY_W 119
@@ -91,10 +91,7 @@ void	validate_file_extension(char *file_name);
 bool	check_collision(t_user *user, double x, double y);
 
 // movement
-void	move_right(t_user *user);
-void	move_left(t_user *user);
-void	move_backward(t_user *user);
-void	move_forward(t_user *user);
+void	move_player(t_user *user);
 
 // rotation
 void	rotate_left(t_user *user);
@@ -118,7 +115,7 @@ void	color_info(t_user *user, char flag, size_t pos);
 // parse_info/parse_info
 void	parse_info(t_user *user);
 size_t	skip_spaces(char *str);
-int     s_atoi(const char *str);
+int		s_atoi(const char *str);
 
 // parse_info/wall_info
 void	extract_line(t_user *user, size_t pos);
@@ -134,6 +131,5 @@ char	*read_file_to_string(char *file_name);
 
 // raycaster
 void	draw_ray(t_user *user);
-void	calculate_plane_vector(t_coord *dir, t_coord *plane, int flag);
 
 #endif

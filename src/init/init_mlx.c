@@ -6,7 +6,7 @@
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/12 08:19:54 by jromann           #+#    #+#             */
-/*   Updated: 2026/03/13 12:35:48 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2026/03/16 13:31:35 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ static void	open_window(t_user *user)
 			"cub3D");
 	if (!user->mlx_win)
 		exit_game(user, ERROR, "Error\nmlx_new_window failed");
-	user->tex.img.img= mlx_new_image(user->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
+	user->tex.img.img = mlx_new_image(user->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
 	if (!user->tex.img.img)
 		exit_game(user, ERROR, "Error\nmlx_new_img failed");
-	user->tex.img.data = mlx_get_data_addr(user->tex.img.img, &user->tex.img.bpp,
-			&user->tex.img.line, &user->tex.img.endian);
+	user->tex.img.data = mlx_get_data_addr(user->tex.img.img,
+			&user->tex.img.bpp, &user->tex.img.line, &user->tex.img.endian);
 	if (!user->tex.img.data)
 		exit_game(user, ERROR, "Error\nmlx_get_data_addr nofailed");
 }

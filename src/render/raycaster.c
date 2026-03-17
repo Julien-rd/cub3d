@@ -6,25 +6,11 @@
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 11:47:08 by jromann           #+#    #+#             */
-/*   Updated: 2026/03/12 15:34:48 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2026/03/16 13:26:59 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-
-void	calculate_plane_vector(t_coord *dir, t_coord *plane, int flag)
-{
-	if (flag == LEFT)
-	{
-		plane->x = FOV_LEN * dir->y;
-		plane->y = -(FOV_LEN * dir->x);
-	}
-	else
-	{
-		plane->x = -(FOV_LEN * dir->y);
-		plane->y = FOV_LEN * dir->x;
-	}
-}
 
 static void	init_dda(t_dda *ray, t_user *user, int screen_x)
 {

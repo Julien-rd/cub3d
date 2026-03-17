@@ -6,7 +6,7 @@
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 15:19:39 by jromann           #+#    #+#             */
-/*   Updated: 2026/03/12 15:35:25 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2026/03/16 13:32:17 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,16 @@ typedef struct s_rgb
 	unsigned int	colour;
 }	t_rgb;
 
-typedef struct s_vars
+typedef struct s_keys
 {
-	bool			key_w;
-	bool			key_s;
-	bool			key_a;
-	bool			key_d;
-	bool			key_arr_l;
-	bool			key_arr_r;
+	bool			w;
+	bool			s;
+	bool			a;
+	bool			d;
+	bool			arr_l;
+	bool			arr_r;
 	int				mouse_pos;
-}	t_vars;
+}	t_keys;
 
 typedef struct s_coord
 {
@@ -60,12 +60,11 @@ typedef struct s_texture
 	t_image			img;
 }	t_texture;
 
-
 typedef struct s_draw_utils
 {
 	int				start;
 	int				end;
-	t_image		*texture;
+	t_image			*texture;
 	double			wall_x;
 	int				tex_x;
 }	t_draw_utils;
@@ -110,8 +109,8 @@ typedef struct s_user
 	t_rgb			ceiling;
 	void			*mlx;
 	void			*mlx_win;
-	t_vars			vars;
 	t_texture		tex;
-}	t_user;
+	t_keys			key;
+}					t_user;
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jromann <jromann@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 11:38:38 by vmanuyko          #+#    #+#             */
-/*   Updated: 2026/03/12 08:34:40 by jromann          ###   ########.fr       */
+/*   Updated: 2026/03/12 16:41:03 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,5 @@ void	init_data(t_user *user)
 	user->ceiling.red = -1;
 	user->ceiling.blue = -1;
 	user->ceiling.green = -1;
-	user->vars.mouse_pos = SCREEN_WIDTH / 2;
+	user->key.mouse_pos = SCREEN_WIDTH / 2;
 }
