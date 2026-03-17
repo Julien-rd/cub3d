@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   raycaster.c                                        :+:      :+:    :+:   */
+/*   dda.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/09 11:47:08 by jromann           #+#    #+#             */
-/*   Updated: 2026/03/17 15:32:19 by vmanuyko         ###   ########.fr       */
+/*   Created: 2026/03/17 15:20:01 by vmanuyko          #+#    #+#             */
+/*   Updated: 2026/03/17 16:48:59 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/dda.h"
+#ifndef DDA_H
+# define DDA_H
 
-void	draw_image(t_user *user)
+#include "cub3d.h"
+
+typedef struct s_dda
 {
-	int x;
-	t_dda	ray;
-	
-	x = 0;
-	ft_bzero(&ray, sizeof(t_dda));
-	while (x < SCREEN_WIDTH)
-	{
-		ray.camera_x = 2 * x / SCREEN_WIDTH -1;
-		ray.dir.x = user->player.dir.x + user->plane.x * ray.camera_x;
-		ray.dir.y = user->player.dir.y + user->plane.y * ray.camera_x;
-		x++;
-	}
-}
+	double			camera_x;
+	t_coord			dir;
+	t_coord			delta_dist;
+	t_coord			side_dist;
+	int				step_x;
+	int				step_y;
+	int				side;
+	double			perp_wall_dist;
+}	t_dda;
+
+#endif

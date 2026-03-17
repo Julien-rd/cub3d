@@ -6,7 +6,7 @@
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/12 08:26:56 by jromann           #+#    #+#             */
-/*   Updated: 2026/03/12 16:51:47 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2026/03/17 15:15:48 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	game_loop(t_user *user)
 		rotate_right(user);
 	if (user->key.mouse_pos < SCREEN_WIDTH / 2 - mouse_zone)
 		rotate_left(user);
-	draw_ray(user);
+	draw_image(user);
 	mlx_put_image_to_window(user->mlx, user->mlx_win, user->tex.img.img, 0, 0);
 	return (0);
 }

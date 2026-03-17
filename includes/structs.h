@@ -6,7 +6,7 @@
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 15:19:39 by jromann           #+#    #+#             */
-/*   Updated: 2026/03/17 15:08:54 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2026/03/17 15:25:31 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define STRUCTS_H
 
 # include <stdbool.h>
+# include "input_keys.h"
 
 typedef struct s_rgb
 {
@@ -22,17 +23,6 @@ typedef struct s_rgb
 	int				blue;
 	unsigned int	colour;
 }	t_rgb;
-
-typedef struct s_keys
-{
-	bool			w;
-	bool			s;
-	bool			a;
-	bool			d;
-	bool			arr_l;
-	bool			arr_r;
-	int				mouse_pos;
-}	t_keys;
 
 typedef struct s_coord
 {
@@ -59,34 +49,6 @@ typedef struct s_texture
 	t_image			e;
 	t_image			img;
 }	t_texture;
-
-typedef struct s_draw_utils
-{
-	int				start;
-	int				end;
-	t_image			*texture;
-	double			wall_x;
-	int				tex_x;
-}	t_draw_utils;
-
-typedef struct s_dda
-{
-	double			camera_x;
-	double			ray_dir_x;
-	double			ray_dir_y;
-	double			pos_x;
-	double			pos_y;
-	double			delta_dist_x;
-	double			delta_dist_y;
-	double			side_dist_x;
-	double			side_dist_y;
-	int				map_x;
-	int				map_y;
-	int				step_x;
-	int				step_y;
-	int				side;
-	double			perp_wall_dist;
-}	t_dda;
 
 typedef struct s_path
 {

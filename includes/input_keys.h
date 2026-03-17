@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   raycaster.c                                        :+:      :+:    :+:   */
+/*   input_keys.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/09 11:47:08 by jromann           #+#    #+#             */
-/*   Updated: 2026/03/17 15:32:19 by vmanuyko         ###   ########.fr       */
+/*   Created: 2026/03/17 15:23:03 by vmanuyko          #+#    #+#             */
+/*   Updated: 2026/03/17 15:24:59 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/dda.h"
+#ifndef INPUT_KEYS_H
+# define INPUT_KEYS_H
 
-void	draw_image(t_user *user)
+# define KEY_ESC 65307
+# define KEY_W 119
+# define KEY_A 97
+# define KEY_S 115
+# define KEY_D 100
+# define KEY_ARR_R 65363
+# define KEY_ARR_L 65361
+
+typedef struct s_keys
 {
-	int x;
-	t_dda	ray;
-	
-	x = 0;
-	ft_bzero(&ray, sizeof(t_dda));
-	while (x < SCREEN_WIDTH)
-	{
-		ray.camera_x = 2 * x / SCREEN_WIDTH -1;
-		ray.dir.x = user->player.dir.x + user->plane.x * ray.camera_x;
-		ray.dir.y = user->player.dir.y + user->plane.y * ray.camera_x;
-		x++;
-	}
-}
+	bool			w;
+	bool			s;
+	bool			a;
+	bool			d;
+	bool			arr_l;
+	bool			arr_r;
+	int				mouse_pos;
+}	t_keys;
+
+#endif

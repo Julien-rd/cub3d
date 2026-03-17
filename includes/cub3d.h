@@ -6,7 +6,7 @@
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 15:18:23 by jromann           #+#    #+#             */
-/*   Updated: 2026/03/17 14:54:08 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2026/03/17 15:23:44 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,6 @@
 
 # define MOVE_S 0.05
 # define ROT_S 0.02
-
-# define KEY_ESC 65307
-# define KEY_W 119
-# define KEY_A 97
-# define KEY_S 115
-# define KEY_D 100
-# define KEY_ARR_R 65363
-# define KEY_ARR_L 65361
 
 //*************** CORE **************//
 
@@ -119,6 +111,6 @@ char	*read_file_to_string(char *file_name);
 //*************** RENDER **************//
 
 // raycaster
-void	draw_ray(t_user *user);
+void	draw_image(t_user *user);
 
 #endif
