@@ -6,7 +6,7 @@
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 15:19:39 by jromann           #+#    #+#             */
-/*   Updated: 2026/03/17 15:25:31 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2026/03/17 17:35:51 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ typedef struct s_rgb
 	unsigned int	colour;
 }	t_rgb;
 
-typedef struct s_coord
+typedef struct s_vector
 {
 	double			x;
 	double			y;
-}	t_coord;
+}	t_vector;
 
 typedef struct s_image
 {
@@ -60,15 +60,15 @@ typedef struct s_path
 
 typedef struct s_player
 {
-	t_coord			pos;
-	t_coord			dir;
+	t_vector			pos;
+	t_vector			dir;
 }	t_player;
 
 typedef struct s_user
 {
 	char			start_dir;
 	t_player		player;
-	t_coord			plane;
+	t_vector			plane;
 	char			**map;
 	char			**info;
 	t_path			path;
