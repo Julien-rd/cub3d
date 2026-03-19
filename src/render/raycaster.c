@@ -6,7 +6,7 @@
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 11:47:08 by jromann           #+#    #+#             */
-/*   Updated: 2026/03/17 15:32:19 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2026/03/19 17:42:51 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,7 @@ void	draw_image(t_user *user)
 	ft_bzero(&ray, sizeof(t_dda));
 	while (x < SCREEN_WIDTH)
 	{
-		ray.camera_x = 2 * x / SCREEN_WIDTH -1;
-		ray.dir.x = user->player.dir.x + user->plane.x * ray.camera_x;
-		ray.dir.y = user->player.dir.y + user->plane.y * ray.camera_x;
+		init_ray(user, &ray, x);
 		x++;
 	}
 }

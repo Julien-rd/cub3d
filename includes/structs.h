@@ -6,7 +6,7 @@
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 15:19:39 by jromann           #+#    #+#             */
-/*   Updated: 2026/03/17 17:35:51 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2026/03/19 17:52:58 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,19 @@ typedef struct s_rgb
 
 typedef struct s_vector
 {
-	double			x;
-	double			y;
+	double	x;
+	double	y;
 }	t_vector;
 
 typedef struct s_image
 {
-	void			*img;
-	char			*data;
-	int				width;
-	int				height;
-	int				bpp;
-	int				line;
-	int				endian;
+	void	*img;
+	char	*data;
+	int		width;
+	int		height;
+	int		bpp;
+	int		line;
+	int		endian;
 }	t_image;
 
 typedef struct s_texture
@@ -68,7 +68,7 @@ typedef struct s_user
 {
 	char			start_dir;
 	t_player		player;
-	t_vector			plane;
+	t_vector		plane;
 	char			**map;
 	char			**info;
 	t_path			path;
