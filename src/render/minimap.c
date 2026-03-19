@@ -6,7 +6,7 @@
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/19 18:17:32 by vmanuyko          #+#    #+#             */
-/*   Updated: 2026/03/19 20:09:20 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2026/03/19 20:24:17 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	draw_minimap(t_user *user)
 		{
 			if (user->map[y][x] == '1')
 				draw_square(user, x, y, GREEN);
-			if (user->map[y][x] == user->start_dir)
+			if (user->map[y][x] == 'P')
 				draw_square(user, x, y, RED);
 			x++;
 		}

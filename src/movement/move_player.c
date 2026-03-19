@@ -6,7 +6,7 @@
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/12 16:35:18 by vmanuyko          #+#    #+#             */
-/*   Updated: 2026/03/17 15:06:04 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2026/03/19 20:21:59 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	move_player(t_user *user)
 		user->player.pos.x = new_x;
 	if (!check_collision(user, user->player.pos.x, new_y))
 		user->player.pos.y = new_y;
+	user->map[(int)user->player.pos.y][(int)user->player.pos.x] = 'P';
 	if (user->key.arr_l)
 		rotate_left(user);
 	if (user->key.arr_r)
