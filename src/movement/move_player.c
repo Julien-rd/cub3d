@@ -6,7 +6,7 @@
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/12 16:35:18 by vmanuyko          #+#    #+#             */
-/*   Updated: 2026/03/20 11:46:38 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2026/03/20 14:23:08 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ void	move_player(t_user *user)
 	double	move_forward;
 	double	move_right;
 
-	user->player.old_pos.x = user->player.pos.x;
-	user->player.old_pos.y = user->player.pos.y;
 	move_forward = user->key.w - user->key.s;
 	move_right = user->key.d - user->key.a;
 	new_x = user->player.pos.x + (move_forward * user->player.dir.x * MOVE_S);

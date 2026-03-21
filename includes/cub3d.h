@@ -6,7 +6,7 @@
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 15:18:23 by jromann           #+#    #+#             */
-/*   Updated: 2026/03/20 11:47:48 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2026/03/21 11:19:10 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,6 @@
 # define SUCCESS 0
 # define ERROR 1
 # define PERROR 2
-
-# define RED 0xff0000
-# define GREEN 0x00FF00
-# define BLUE 0x0000FF
-# define BLACK 0x000000
-
-# define MINI_TILE 16
 
 //*************** CORE **************//
 

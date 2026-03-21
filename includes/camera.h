@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   raycaster.c                                        :+:      :+:    :+:   */
+/*   camera.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/09 11:47:08 by jromann           #+#    #+#             */
-/*   Updated: 2026/03/19 17:42:51 by vmanuyko         ###   ########.fr       */
+/*   Created: 2026/03/20 13:15:40 by vmanuyko          #+#    #+#             */
+/*   Updated: 2026/03/20 13:55:58 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/dda.h"
+#ifndef CAMERA_H
+# define CAMERA_H
 
-void	draw_image(t_user *user)
+# include "dda.h"
+
+# define VIEW_LENGTH 10
+
+typedef struct	s_camera
 {
-	int x;
-	t_dda	ray;
-	
-	x = 0;
-	ft_bzero(&ray, sizeof(t_dda));
-	while (x < SCREEN_WIDTH)
-	{
-		init_ray(user, &ray, x);
-		x++;
-	}
-}
+	t_vector	min;
+	t_vector	max;
+}	t_camera;
+
+#endif

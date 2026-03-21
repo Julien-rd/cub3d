@@ -6,7 +6,7 @@
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 15:20:01 by vmanuyko          #+#    #+#             */
-/*   Updated: 2026/03/19 17:44:43 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2026/03/21 11:20:43 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,16 @@
 # define DDA_H
 
 # include "cub3d.h"
+# include "camera.h"
+
+# define MINI_TILE 16
+# define PLAYER_TILE 8
+# define MINI_SIZE 200
+
+# define RED 0xff0000
+# define GREEN 0x00FF00
+# define BLUE 0x0000FF
+# define BLACK 0x000000
 
 typedef struct s_coord
 {
