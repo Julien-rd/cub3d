@@ -6,7 +6,7 @@
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 15:20:01 by vmanuyko          #+#    #+#             */
-/*   Updated: 2026/03/21 11:50:50 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2026/03/21 12:43:07 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,10 @@
 # include "cub3d.h"
 # include "camera.h"
 
-# define MINI_TILE 16
-# define PLAYER_TILE 8
-# define MINI_SIZE 200
+# define MINI_TILE 8
+# define PLAYER_TILE 4
+# define MINI_SIZE 160
+# define MINI_OFFSET 20
 
 # define RED 0xff0000
 # define GREEN 0x00FF00
