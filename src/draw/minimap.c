@@ -6,7 +6,7 @@
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/19 18:17:32 by vmanuyko          #+#    #+#             */
-/*   Updated: 2026/03/21 12:44:18 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2026/03/21 13:55:12 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ static void	draw_player(t_user *user, t_camera *cam, unsigned int colour)
 	int	draw_x;
 	int	draw_y;
 
-	start_x = (user->player.pos.x - cam->min.x) * PLAYER_TILE;
-	start_y = (user->player.pos.y - cam->min.y) * PLAYER_TILE;
+	start_x = MINI_OFFSET + (user->player.pos.x - cam->min.x) * MINI_TILE;
+	start_y = MINI_OFFSET + (user->player.pos.y - cam->min.y) * MINI_TILE;
 	draw_y = 0;
 	while (draw_y < PLAYER_TILE)
 	{

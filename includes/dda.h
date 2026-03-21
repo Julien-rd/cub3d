@@ -6,7 +6,7 @@
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 15:20:01 by vmanuyko          #+#    #+#             */
-/*   Updated: 2026/03/21 12:43:07 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2026/03/21 13:56:48 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define DDA_H
 
 # include "cub3d.h"
-# include "camera.h"
 
 # define MINI_TILE 8
 # define PLAYER_TILE 4
@@ -43,6 +42,12 @@ typedef struct s_dda
 	t_coord			map;
 	t_coord			step;
 }	t_dda;
+
+typedef struct	s_camera
+{
+	t_vector	min;
+	t_coord		max;
+}	t_camera;
 
 void	init_ray(t_user *user, t_dda *ray, int x);
 void	init_camera(t_camera *cam, t_user *user);
