@@ -6,7 +6,7 @@
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/19 18:17:32 by vmanuyko          #+#    #+#             */
-/*   Updated: 2026/03/24 14:39:22 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2026/03/24 15:21:31 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,48 +14,44 @@
 
 static void	draw_square(t_user *user, int x, int y, unsigned int colour)
 {
-	int	start_x;
-	int	start_y;
-	int	draw_x;
-	int	draw_y;
+	t_coord	start;
+	t_coord	draw;
 
-	start_x = MINI_OFFSET + x * MINI_TILE;
-	start_y = MINI_OFFSET + y * MINI_TILE;
-	draw_y = 0;
-	if (start_x < 0 || start_y < 0
-		|| start_x > MINI_SIZE || start_y > MINI_SIZE)
+	start.x = MINI_OFFSET + x * MINI_TILE;
+	start.y = MINI_OFFSET + y * MINI_TILE;
+	draw.y = 0;
+	if (start.x < 0 || start.y < 0
+		|| start.x > MINI_SIZE || start.y > MINI_SIZE)
 		return ;
-	while (draw_y < MINI_TILE)
+	while (draw.y < MINI_TILE)
 	{
-		draw_x = 0;
-		while (draw_x < MINI_TILE)
+		draw.x = 0;
+		while (draw.x < MINI_TILE)
 		{
-			ft_put_pixel(start_x + draw_x, start_y + draw_y, user, colour);
-			draw_x++;
+			ft_put_pixel(start.x + draw.x, start.y + draw.y, user, colour);
+			draw.x++;
 		}
-		draw_y++;
+		draw.y++;
 	}
 }
 
 static void	draw_player(t_user *user, t_vector pos, t_camera *cam)
 {
-	int	start_x;
-	int	start_y;
-	int	draw_x;
-	int	draw_y;
+	t_coord	start;
+	t_coord	draw;
 
-	start_x = MINI_OFFSET + (pos.x - cam->min.x) * MINI_TILE - PLAYER_TILE / 2;
-	start_y = MINI_OFFSET + (pos.y - cam->min.y) * MINI_TILE - PLAYER_TILE / 2;
-	draw_y = 0;
-	while (draw_y < PLAYER_TILE)
+	start.x = MINI_OFFSET + (pos.x - cam->min.x) * MINI_TILE - PLAYER_TILE / 2;
+	start.y = MINI_OFFSET + (pos.y - cam->min.y) * MINI_TILE - PLAYER_TILE / 2;
+	draw.y = 0;
+	while (draw.y < PLAYER_TILE)
 	{
-		draw_x = 0;
-		while (draw_x < PLAYER_TILE)
+		draw.x = 0;
+		while (draw.x < PLAYER_TILE)
 		{
-			ft_put_pixel(start_x + draw_x, start_y + draw_y, user, RED);
-			draw_x++;
+			ft_put_pixel(start.x + draw.x, start.y + draw.y, user, RED);
+			draw.x++;
 		}
-		draw_y++;
+		draw.y++;
 	}
 }
 

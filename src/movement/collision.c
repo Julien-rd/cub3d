@@ -6,11 +6,11 @@
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 16:35:54 by jromann           #+#    #+#             */
-/*   Updated: 2026/03/16 14:15:21 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2026/03/24 15:49:43 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../includes/dda.h"
 
 static bool	is_wall_at(t_user *user, double x, double y)
 {
@@ -19,16 +19,16 @@ static bool	is_wall_at(t_user *user, double x, double y)
 
 bool	check_collision(t_user *user, double x, double y)
 {
-	double	buffer;
+	double	buf;
 
-	buffer = 0.2;
-	if (is_wall_at(user, x - buffer, y - buffer))
+	buf = 0.1;
+	if (is_wall_at(user, x - buf, y - buf))
 		return (true);
-	if (is_wall_at(user, x + buffer, y - buffer))
+	if (is_wall_at(user, x + buf, y - buf))
 		return (true);
-	if (is_wall_at(user, x - buffer, y + buffer))
+	if (is_wall_at(user, x - buf, y + buf))
 		return (true);
-	if (is_wall_at(user, x + buffer, y + buffer))
+	if (is_wall_at(user, x + buf, y + buf))
 		return (true);
 	return (false);
 }
