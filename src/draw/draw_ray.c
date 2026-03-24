@@ -6,7 +6,7 @@
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/23 12:02:21 by vmanuyko          #+#    #+#             */
-/*   Updated: 2026/03/23 15:52:07 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2026/03/24 14:39:07 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ static void	draw_line(t_user *user, t_line *line, t_coord *pos, int axis)
 }
 
 /* First prototype of draw_ray for minimap, will draw a ray form
- * player position in direction,w here he looks, later can be used,
+ * player position in direction, where he looks, later can be used,
  * but end shall be modified to use dist to a wall, where ray hits it.
 */
 void	draw_ray(t_user *user, t_camera *cam)
