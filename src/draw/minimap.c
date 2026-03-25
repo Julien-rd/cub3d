@@ -6,7 +6,7 @@
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/19 18:17:32 by vmanuyko          #+#    #+#             */
-/*   Updated: 2026/03/24 16:34:17 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2026/03/25 13:00:15 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,17 +80,17 @@ void	draw_minimap(t_user *user)
 	char		tile;
 
 	init_camera(&cam, user);
-	y = (int)cam.min.y;
-	while (y < (int)cam.max.y)
+	y = cam.min.y;
+	while (y < cam.max.y)
 	{
-		x = (int)cam.min.x;
-		while (x < (int)cam.max.x)
+		x = cam.min.x;
+		while (x < cam.max.x)
 		{
 			tile = get_tile(x, y, user->map);
 			if (tile == '1' || tile == ' ')
-				draw_square(user, x -(int)cam.min.x, y -(int)cam.min.y, BLUE);
+				draw_square(user, x - cam.min.x, y - cam.min.y, BLUE);
 			if (tile == '0' || tile == user->start_dir)
-				draw_square(user, x -(int)cam.min.x, y -(int)cam.min.y, WHITE);
+				draw_square(user, x - cam.min.x, y - cam.min.y, WHITE);
 			x++;
 		}
 		y++;
