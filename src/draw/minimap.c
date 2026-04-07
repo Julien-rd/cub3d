@@ -6,7 +6,7 @@
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/19 18:17:32 by vmanuyko          #+#    #+#             */
-/*   Updated: 2026/03/25 13:00:15 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2026/04/07 10:39:20 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,5 +96,5 @@ void	draw_minimap(t_user *user)
 		y++;
 	}
 	draw_player(user);
-	draw_ray(user, &cam);
+	draw_ray(user);
 }

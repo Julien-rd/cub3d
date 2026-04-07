@@ -6,7 +6,7 @@
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 15:20:01 by vmanuyko          #+#    #+#             */
-/*   Updated: 2026/03/27 12:39:41 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2026/04/07 10:39:08 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ typedef struct	s_line
 void	init_ray(t_user *user, t_dda *ray, int x);
 void	init_camera(t_camera *cam, t_user *user);
 void	ft_put_pixel(int x, int y, t_user *user, unsigned int colour);
-void	draw_ray(t_user *user, t_camera *cam);
+void	draw_ray(t_user *user);
 void	get_rays(t_user *user);
 
 #endif

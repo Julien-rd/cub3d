@@ -6,7 +6,7 @@
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/23 12:02:21 by vmanuyko          #+#    #+#             */
-/*   Updated: 2026/04/07 10:37:39 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2026/04/07 10:39:02 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ static void	draw_line(t_user *user, t_line *line, t_coord *pos, int axis)
  * player position in direction, where he looks, later can be used,
  * but end shall be modified to use dist to a wall, where ray hits it.
 */
-void	draw_ray(t_user *user, t_camera *cam)
+void	draw_ray(t_user *user)
 {
 	t_line	line;
 	t_coord	pos;
