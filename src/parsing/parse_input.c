@@ -6,7 +6,7 @@
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 15:11:39 by jromann           #+#    #+#             */
-/*   Updated: 2026/03/12 15:55:08 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2026/04/08 16:43:47 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	parse_input(char *file_name, t_user *user)
 
 	input = read_file_to_string(file_name);
 	if (!input)
-		exit_game(user, ERROR, "Error\nEmpty file !\n");
+		exit_game(user, ERROR, "Error\nEmpty file !");
 	create_and_validate_map(input, user);
 	parse_info(user);
 	final_check(user);
