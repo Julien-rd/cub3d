@@ -6,7 +6,7 @@
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/19 17:43:04 by vmanuyko          #+#    #+#             */
-/*   Updated: 2026/03/19 17:53:14 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2026/04/08 12:59:31 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	init_ray(t_user *user, t_dda *ray, int x)
 {
 	ray->map.x = (int)user->player.pos.x;
 	ray->map.y = (int)user->player.pos.y;
-	ray->camera_x = 2 * x / SCREEN_WIDTH -1;
+	ray->camera_x = 2.0 * x / SCREEN_WIDTH - 1.0;
 	ray->dir.x = user->player.dir.x + user->plane.x * ray->camera_x;
 	ray->dir.y = user->player.dir.y + user->plane.y * ray->camera_x;
 	if (ray->dir.x == 0)

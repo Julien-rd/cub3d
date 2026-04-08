@@ -6,7 +6,7 @@
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 15:20:01 by vmanuyko          #+#    #+#             */
-/*   Updated: 2026/04/07 14:17:55 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2026/04/08 11:51:43 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ typedef struct s_draw
 	int		end;
 	t_image	*tex;
 	int		tex_x;
+	int		line_height;
 }	t_draw;
 
 

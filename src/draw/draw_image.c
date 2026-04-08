@@ -6,7 +6,7 @@
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 14:44:11 by vmanuyko          #+#    #+#             */
-/*   Updated: 2026/04/07 15:03:44 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2026/04/08 13:04:29 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,31 +30,40 @@ static t_image	*get_texture(t_user *user, t_dda *ray)
 
 static void	init_draw(t_user *user, t_dda *ray, t_draw *wall)
 {
-	int		line_height;
 	double	wall_x;
 
 	ft_bzero(wall, sizeof(t_draw));
 	if (ray->perp_dist_wall == 0.0)
 		ray->perp_dist_wall = 0.0001;
-	line_height = (int)(SCREEN_HEIGHT / ray->perp_dist_wall);
-	wall->start = -line_height / 2 + SCREEN_HEIGHT / 2;
+	wall->line_height = (int)(SCREEN_HEIGHT / ray->perp_dist_wall);
+	if (wall->line_height <= 0)
+		wall->line_height = 1;
+	wall->start = -wall->line_height / 2 + SCREEN_HEIGHT / 2;
 	if (wall->start < 0)
 		wall->start = 0;
-	wall->end = line_height / 2 + SCREEN_HEIGHT / 2;
+	wall->end = wall->line_height / 2 + SCREEN_HEIGHT / 2;
 	if (wall->end >= SCREEN_HEIGHT)
 		wall->end = SCREEN_HEIGHT - 1;
 	wall->tex = get_texture(user, ray);
 	if (ray->side == 0)
-		wall_x = ray->map.x + ray->perp_dist_wall * ray->dir.x;
+		wall_x = user->player.pos.y + ray->perp_dist_wall * ray->dir.y;
 	else
-		wall_x = ray->map.y + ray->perp_dist_wall * ray->dir.y;
+		wall_x = user->player.pos.x + ray->perp_dist_wall * ray->dir.x;
 	wall_x -= floor(wall_x);
+	wall->tex_x = (int)(wall_x * wall->tex->width);
+	if ((ray->side == 0 && ray->dir.x > 0)
+		|| (ray->side == 1 && ray->dir.y < 0))
+		wall->tex_x = wall->tex->width - wall->tex_x - 1;
 }
 
 static void	draw_vertical(t_user *user, t_dda *ray, int x)
 {
 	t_draw	wall;
 	int		y;
+	double	step;
+	double	tex_pos;
+	int		tex_y;
+	int		colour;
 
 	y = 0;
 	init_draw(user, ray, &wall);
@@ -63,7 +72,22 @@ static void	draw_vertical(t_user *user, t_dda *ray, int x)
 		ft_put_pixel(x, y, user, user->ceiling.colour);
 		y++;		
 	}
-	y = wall.end + 1;
+	step = (double)wall.tex->height / wall.line_height;
+	tex_pos = (wall.start - SCREEN_HEIGHT / 2 + wall.line_height / 2) * step;
+	y = wall.start;
+	while (y <= wall.end)
+	{
+		tex_y = (int)tex_pos;
+		if (tex_y >= wall.tex->height)
+			tex_y = wall.tex->height - 1;
+		if (tex_y < 0)
+			tex_y = 0;
+		tex_pos += step;
+		colour = *(int *)(wall.tex->data +
+			(tex_y * wall.tex->line + wall.tex_x * (wall.tex->bpp / 8)));
+		ft_put_pixel(x, y, user, colour);
+		y++;
+	}
 	while (y < SCREEN_HEIGHT)
 	{
 		ft_put_pixel(x, y, user, user->floor.colour);
