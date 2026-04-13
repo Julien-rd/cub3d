@@ -6,7 +6,7 @@
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 15:20:01 by vmanuyko          #+#    #+#             */
-/*   Updated: 2026/04/08 11:51:43 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2026/04/13 15:39:51 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,11 @@ typedef struct s_camera
 	t_coord	max;
 }	t_camera;
 
-typedef struct	s_line
+typedef struct s_line
 {
-	int			A;
-	int			B;
-	int			P;
+	int			a;
+	int			b;
+	int			p;
 	t_coord		start;
 	t_coord		end;
 	t_coord		step;
@@ -72,7 +72,6 @@ typedef struct s_draw
 	int		tex_x;
 	int		line_height;
 }	t_draw;
-
 
 void	init_ray(t_user *user, t_dda *ray, int x);
 void	init_camera(t_camera *cam, t_user *user);

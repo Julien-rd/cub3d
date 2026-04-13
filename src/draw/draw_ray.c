@@ -6,7 +6,7 @@
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/23 12:02:21 by vmanuyko          #+#    #+#             */
-/*   Updated: 2026/04/08 15:21:03 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2026/04/13 15:39:29 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,15 @@ static void	adjust_error(t_line *line)
 {
 	if (line->dist.x > line->dist.y)
 	{
-		line->A = 2 * line->dist.y;
-		line->B = line->A - 2 * line->dist.x;
-		line->P = line->A - line->dist.x;
+		line->a = 2 * line->dist.y;
+		line->b = line->a - 2 * line->dist.x;
+		line->p = line->a - line->dist.x;
 	}
 	else
 	{
-		line->A = 2 * line->dist.x;
-		line->B = line->A - 2 * line->dist.y;
-		line->P = line->A - line->dist.y;
+		line->a = 2 * line->dist.x;
+		line->b = line->a - 2 * line->dist.y;
+		line->p = line->a - line->dist.y;
 	}
 }
 
@@ -68,16 +68,16 @@ static void	draw_line(t_user *user, t_line *line, t_coord *pos, int axis)
 		pos->x += line->step.x;
 	else if (axis == Y_AXIS)
 		pos->y += line->step.y;
-	if (line->P >= 0)
+	if (line->p >= 0)
 	{
 		if (axis == X_AXIS)
 			pos->y += line->step.y;
 		else if (axis == Y_AXIS)
 			pos->x += line->step.x;
-		line->P += line->B;
+		line->p += line->b;
 	}
 	else
-		line->P += line->A;
+		line->p += line->a;
 }
 
 /* First prototype of draw_ray for minimap, will draw a ray form

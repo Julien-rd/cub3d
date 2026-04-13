@@ -6,7 +6,7 @@
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/19 18:17:32 by vmanuyko          #+#    #+#             */
-/*   Updated: 2026/04/07 10:39:20 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2026/04/13 15:04:57 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,7 @@ static char	get_tile(int x, int y, char **map)
 		return (' ');
 	return (map[y][x]);
 }
-/*
- * TO DO: add dda + draw_ray in a loop for each ray casted,
- * so that the player on the minimap has a FOV representation*.
-*/
+
 void	draw_minimap(t_user *user)
 {
 	int			x;

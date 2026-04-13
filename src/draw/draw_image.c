@@ -6,7 +6,7 @@
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/20 14:44:11 by vmanuyko          #+#    #+#             */
-/*   Updated: 2026/04/08 16:36:11 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2026/04/13 15:36:32 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,24 +56,16 @@ static void	init_draw(t_user *user, t_dda *ray, t_draw *wall)
 		wall->tex_x = wall->tex->width - wall->tex_x - 1;
 }
 
-static void	draw_vertical(t_user *user, t_dda *ray, int x)
+static void	draw_texture(t_user *user, t_draw wall, int x)
 {
-	t_draw	wall;
 	int		y;
-	double	step;
+	int		colour;
 	double	tex_pos;
 	int		tex_y;
-	int		colour;
+	double	step;
 
-	y = 0;
-	init_draw(user, ray, &wall);
-	while (y < wall.start)
-	{
-		ft_put_pixel(x, y, user, user->ceiling.colour);
-		y++;		
-	}
 	step = (double)wall.tex->height / wall.line_height;
-	tex_pos = (wall.start - SCREEN_HEIGHT / 2.0 + wall.line_height / 2.0) * step;
+	tex_pos = (wall.start - SCREEN_HEIGHT / 2 + wall.line_height / 2) * step;
 	y = wall.start;
 	while (y <= wall.end)
 	{
@@ -83,11 +75,27 @@ static void	draw_vertical(t_user *user, t_dda *ray, int x)
 		if (tex_y < 0)
 			tex_y = 0;
 		tex_pos += step;
-		colour = *(int *)(wall.tex->data +
-			(tex_y * wall.tex->line + wall.tex_x * (wall.tex->bpp / 8)));
+		colour = *(int *)(wall.tex->data
+				+ (tex_y * wall.tex->line + wall.tex_x * (wall.tex->bpp / 8)));
 		ft_put_pixel(x, y, user, colour);
 		y++;
 	}
+}
+
+static void	draw_vertical(t_user *user, t_dda *ray, int x)
+{
+	int		y;
+	t_draw	wall;
+
+	y = 0;
+	init_draw(user, ray, &wall);
+	while (y < wall.start)
+	{
+		ft_put_pixel(x, y, user, user->ceiling.colour);
+		y++;
+	}
+	draw_texture(user, wall, x);
+	y = wall.end + 1;
 	while (y < SCREEN_HEIGHT)
 	{
 		ft_put_pixel(x, y, user, user->floor.colour);
