@@ -66,18 +66,28 @@ By default, this project expects libmlx.a to be located in:
 ```
 /usr/lib
 ```
-If the library is located elsewhere, the Makefile must be adjusted accordingly.
-
+If the library is located elsewhere, the Makefile must be adjusted accordingly:
+```
+LDFLAGS = -L<other mlx directory> -lmlx -lXext -lX11 -lm -lz
+```
 ***Compilation***
 ```
 make
+```
+For extra features like minimap, wall collision(gliding) and mouse rotation:
+```
+make bonus
 ```
 
 ***Run the program*** 
 ```
 ./cub3D <map.cub>
 ```
-#### *Note:* in `maps/` there are examples of valid/invalid maps.
+or for bonus:
+```
+./cub3D_bonus <map.cub>
+```
+#### *Note:* in `maps/` there are examples of valid/invalid maps that could be used instead of <map.cub>.
 
 ## Recourses
 
@@ -101,5 +111,7 @@ These are useful links we used while building the project:
 [Github repository with Cub3d guide](https://github.com/Toufa7/Cub3D/tree/main)
 
 [Bresenham's algorithm explained](https://www.csfieldguide.org.nz/en/chapters/computer-graphics/drawing-lines-and-circles/#bresenham-s-line-algorithm)
+
+[Awesome Makefile](https://github.com/tesla33io/awesome_makefile)
 
 [ChatGPT discussion about FOV angle](https://chatgpt.com/share/69b825cd-c164-8004-9cdd-873c08cebaa9)

@@ -6,27 +6,11 @@
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/13 18:22:16 by vmanuyko          #+#    #+#             */
-/*   Updated: 2026/04/13 18:22:18 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2026/04/14 13:34:19 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/dda.h"
-
-static void	adjust_error(t_line *line)
-{
-	if (line->dist.x > line->dist.y)
-	{
-		line->a = 2 * line->dist.y;
-		line->b = line->a - 2 * line->dist.x;
-		line->p = line->a - line->dist.x;
-	}
-	else
-	{
-		line->a = 2 * line->dist.x;
-		line->b = line->a - 2 * line->dist.y;
-		line->p = line->a - line->dist.y;
-	}
-}
 
 /*
  * Initialises line struct with following variables:
@@ -38,16 +22,12 @@ static void	adjust_error(t_line *line)
  * A, B, P are used for the Bresenham algorithm calculations and
  * are set according to in which direction we will "step".
 */
-static void	init_line(t_line *l, t_dda *ray)
+static void	init_line(t_line *l, t_player p)
 {
-	t_coord	map;
-
-	map.x = ray->dir.x * ray->perp_dist_wall;
-	map.y = ray->dir.y * ray->perp_dist_wall;
 	l->start.x = MINI_OFFSET + MINI_SIZE / 2;
 	l->start.y = MINI_OFFSET + MINI_SIZE / 2;
-	l->end.x = l->start.x + map.x * MINI_TILE;
-	l->end.y = l->start.y + map.y * MINI_TILE;
+	l->end.x = l->start.x + (p.dir.x * 2) * MINI_TILE;
+	l->end.y = l->start.y + (p.dir.y * 2) * MINI_TILE;
 	if (l->end.x > MINI_SIZE)
 		l->end.x = MINI_SIZE;
 	if (l->end.y > MINI_SIZE)
@@ -56,7 +36,18 @@ static void	init_line(t_line *l, t_dda *ray)
 	l->step.y = (l->end.y > l->start.y) - (l->end.y < l->start.y);
 	l->dist.x = abs(l->end.x - l->start.x);
 	l->dist.y = abs(l->end.y - l->start.y);
-	adjust_error(l);
+	if (l->dist.x > l->dist.y)
+	{
+		l->a = 2 * l->dist.y;
+		l->b = l->a - 2 * l->dist.x;
+		l->p = l->a - l->dist.x;
+	}
+	else
+	{
+		l->a = 2 * l->dist.x;
+		l->b = l->a - 2 * l->dist.y;
+		l->p = l->a - l->dist.y;
+	}
 }
 
 static void	draw_line(t_user *user, t_line *line, t_coord *pos, int axis)
@@ -89,7 +80,7 @@ void	draw_ray(t_user *user)
 	t_line	line;
 	t_coord	pos;
 
-	init_line(&line, user->ray[SCREEN_WIDTH / 2]);
+	init_line(&line, user->player);
 	pos.x = line.start.x;
 	pos.y = line.start.y;
 	if (line.dist.x > line.dist.y)
