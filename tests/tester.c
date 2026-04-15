@@ -94,7 +94,7 @@ Test(invalid, empty_xpm_file)
 
 Test(invalid, linked_hidden_file_xpm)
 {
-	t_result res = run_cub3d("link_xpm_file.cub");
+	t_result res = run_cub3d("./maps/invalid/link_xpm_file.cub");
 
 	cr_assert_eq(res.exit_code, 1);
 	cr_assert_str_eq(res.stderr, "Error\nWrong texture file extension\n");
