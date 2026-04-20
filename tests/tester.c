@@ -1,19 +1,20 @@
 #include "tester.h"
 
-t_result	run_cub3d(char *file)
+# define PROG "./cub3D"
+
+t_result	run_cub3d(char **argv)
 {
 	t_result	res;
-	char		*argv[3] = {"./cub3D", NULL, NULL};
 
 	bzero(&res, sizeof(t_result));
-	argv[1] = file;
 	exec_program(&res, argv);
 	return (res);
 }
 
 Test(invalid, wrong_xpm_extension)
 {
-	t_result res = run_cub3d("./maps/invalid/invalid_xpm_extension.cub");
+	char *argv[] = {PROG, "maps/invalid/invalid_xpm_extension.cub", NULL};
+	t_result res = run_cub3d(argv);
 
 	cr_assert_eq(res.exit_code, 1);
 	cr_assert_str_eq(res.stderr, "Error\nWrong texture file extension\n");
@@ -22,7 +23,8 @@ Test(invalid, wrong_xpm_extension)
 
 Test(invalid, file_doesnt_exist)
 {
-	t_result res = run_cub3d("no.cub");
+	char *argv[] = {PROG, "no.cub", NULL};
+	t_result res = run_cub3d(argv);
 
 	cr_assert_eq(res.exit_code, 1);
 	cr_assert_str_eq(res.stderr, "Error\nopen: No such file or directory\n");
@@ -31,7 +33,8 @@ Test(invalid, file_doesnt_exist)
 
 Test(invalid, empty_file)
 {
-	t_result res = run_cub3d("./maps/invalid/empty.cub");
+	char *argv[] = {PROG, "maps/invalid/empty.cub", NULL};
+	t_result res = run_cub3d(argv);
 
 	cr_assert_eq(res.exit_code, 1);
 	cr_assert_str_eq(res.stderr, "Error\nEmpty file\n");
@@ -40,7 +43,8 @@ Test(invalid, empty_file)
 
 Test(invalid, no_map)
 {
-	t_result res = run_cub3d("./maps/invalid/no_map.cub");
+	char *argv[] = {PROG, "maps/invalid/no_map.cub", NULL};
+	t_result res = run_cub3d(argv);
 
 	cr_assert_eq(res.exit_code, 1);
 	cr_assert_str_eq(res.stderr, "Error\nNo map found\n");
@@ -49,7 +53,8 @@ Test(invalid, no_map)
 
 Test(cub3d, wrong_extension_cubb)
 {
-	t_result res = run_cub3d("./maps/invalid/invalid_extension.cubbb");
+	char *argv[] = {PROG, "maps/invalid/invalid_extension.cubbb", NULL};
+	t_result res = run_cub3d(argv);
 
 	cr_assert_eq(res.exit_code, 1);
 	cr_assert_str_eq(res.stderr, "Error\nInvalid input format\n");
@@ -58,7 +63,8 @@ Test(cub3d, wrong_extension_cubb)
 
 Test(invalid, no_args)
 {
-	t_result res = run_cub3d(0);
+	char *argv[] = {PROG, NULL};
+	t_result res = run_cub3d(argv);
 
 	cr_assert_eq(res.exit_code, 1);
 	cr_assert_str_eq(res.stderr, "Error\nInvalid number of arguments\n");
@@ -67,7 +73,8 @@ Test(invalid, no_args)
 
 Test(invalid, empty_arg)
 {
-	t_result res = run_cub3d("");
+	char *argv[] = {PROG, "", NULL};
+	t_result res = run_cub3d(argv);
 
 	cr_assert_eq(res.exit_code, 1);
 	cr_assert_str_eq(res.stderr, "Error\nInvalid input format\n");
@@ -76,7 +83,8 @@ Test(invalid, empty_arg)
 
 Test(invalid, hidden_file_in_folder)
 {
-	t_result res = run_cub3d("./maps/invalid/.cub");
+	char *argv[] = {PROG, "maps/invalid/.cub", NULL};
+	t_result res = run_cub3d(argv);
 
 	cr_assert_eq(res.exit_code, 1);
 	cr_assert_str_eq(res.stderr, "Error\nInvalid input format\n");
@@ -85,7 +93,8 @@ Test(invalid, hidden_file_in_folder)
 
 Test(invalid, hidden_file)
 {
-	t_result res = run_cub3d(".cub");
+	char *argv[] = {PROG, ".cub", NULL};
+	t_result res = run_cub3d(argv);
 
 	cr_assert_eq(res.exit_code, 1);
 	cr_assert_str_eq(res.stderr, "Error\nInvalid input format\n");
@@ -94,7 +103,8 @@ Test(invalid, hidden_file)
 
 Test(invalid, empty_xpm_file)
 {
-	t_result res = run_cub3d("./maps/invalid/empty_xpm_file.cub");
+	char *argv[] = {PROG, "maps/invalid/empty_xpm_file.cub", NULL};
+	t_result res = run_cub3d(argv);
 
 	cr_assert_eq(res.exit_code, 1);
 	cr_assert_str_eq(res.stderr, "Error\nFailed to load north texture\n");
@@ -103,7 +113,8 @@ Test(invalid, empty_xpm_file)
 
 Test(invalid, linked_hidden_file_xpm)
 {
-	t_result res = run_cub3d("./maps/invalid/link_xpm_file.cub");
+	char *argv[] = {PROG, "maps/invalid/link_xpm_file.cub", NULL};
+	t_result res = run_cub3d(argv);
 
 	cr_assert_eq(res.exit_code, 1);
 	cr_assert_str_eq(res.stderr, "Error\nWrong texture file extension\n");
@@ -112,7 +123,8 @@ Test(invalid, linked_hidden_file_xpm)
 
 Test(invalid, invalid_char_in_map)
 {
-	t_result res = run_cub3d("./maps/invalid/invalid_char_in_map.cub");
+	char *argv[] = {PROG, "maps/invalid/invalid_char_in_map.cub", NULL};
+	t_result res = run_cub3d(argv);
 
 	cr_assert_eq(res.exit_code, 1);
 	cr_assert_str_eq(res.stderr, "Error\nInvalid info in provided file\n");
@@ -121,7 +133,8 @@ Test(invalid, invalid_char_in_map)
 
 Test(invalid, wrong_extension_txt)
 {
-	t_result res = run_cub3d("./maps/invalid/invalid_extension.txt");
+	char *argv[] = {PROG, "maps/invalid/invalid_extension.txt", NULL};
+	t_result res = run_cub3d(argv);
 
 	cr_assert_eq(res.exit_code, 1);
 	cr_assert_str_eq(res.stderr, "Error\nInvalid input format\n");
@@ -130,7 +143,8 @@ Test(invalid, wrong_extension_txt)
 
 Test(invalid, misplaced_info)
 {
-	t_result res = run_cub3d("./maps/invalid/misplaced_info.cub");
+	char *argv[] = {PROG, "maps/invalid/misplaced_info.cub", NULL};
+	t_result res = run_cub3d(argv);
 
 	cr_assert_eq(res.exit_code, 1);
 	cr_assert_str_eq(res.stderr, "Error\nInvalid info in provided file\n");
@@ -139,7 +153,8 @@ Test(invalid, misplaced_info)
 
 Test(invalid, missing_texture)
 {
-	t_result res = run_cub3d("./maps/invalid/missing_texture.cub");
+	char *argv[] = {PROG, "maps/invalid/missing_texture.cub", NULL};
+	t_result res = run_cub3d(argv);
 
 	cr_assert_eq(res.exit_code, 1);
 	cr_assert_str_eq(res.stderr, "Error\nNo path found\n");
@@ -148,7 +163,8 @@ Test(invalid, missing_texture)
 
 Test(invalid, only_map)
 {
-	t_result res = run_cub3d("./maps/invalid/only_map.cub");
+	char *argv[] = {PROG, "maps/invalid/only_map.cub", NULL};
+	t_result res = run_cub3d(argv);
 
 	cr_assert_eq(res.exit_code, 1);
 	cr_assert_str_eq(res.stderr, "Error\nInvalid info in provided file\n");
@@ -157,7 +173,8 @@ Test(invalid, only_map)
 
 Test(invalid, player_out_of_map)
 {
-	t_result res = run_cub3d("./maps/invalid/player_out_of_map.cub");
+	char *argv[] = {PROG, "maps/invalid/player_out_of_map.cub", NULL};
+	t_result res = run_cub3d(argv);
 
 	cr_assert_eq(res.exit_code, 1);
 	cr_assert_str_eq(res.stderr, "Error\nInvalid info in provided file\n");
@@ -166,7 +183,8 @@ Test(invalid, player_out_of_map)
 
 Test(invalid, random_content)
 {
-	t_result res = run_cub3d("./maps/invalid/random_content.cub");
+	char *argv[] = {PROG, "maps/invalid/random_content.cub", NULL};
+	t_result res = run_cub3d(argv);
 
 	cr_assert_eq(res.exit_code, 1);
 	cr_assert_str_eq(res.stderr, "Error\nNo map found\n");
@@ -175,7 +193,8 @@ Test(invalid, random_content)
 
 Test(invalid, space_in_colour)
 {
-	t_result res = run_cub3d("./maps/invalid/space_in_color.cub");
+	char *argv[] = {PROG, "maps/invalid/space_in_color.cub", NULL};
+	t_result res = run_cub3d(argv);
 
 	cr_assert_eq(res.exit_code, 1);
 	cr_assert_str_eq(res.stderr, "Error\nInvalid colour description\n");
@@ -184,7 +203,8 @@ Test(invalid, space_in_colour)
 
 Test(invalid, space_in_map)
 {
-	t_result res = run_cub3d("./maps/invalid/space_in_map.cub");
+	char *argv[] = {PROG, "maps/invalid/space_in_map.cub", NULL};
+	t_result res = run_cub3d(argv);
 
 	cr_assert_eq(res.exit_code, 1);
 	cr_assert_str_eq(res.stderr, "Error\nEmpty line in map\n");
@@ -193,7 +213,8 @@ Test(invalid, space_in_map)
 
 Test(invalid, multiple_maps)
 {
-	t_result res = run_cub3d("./maps/invalid/multiple_maps.cub");
+	char *argv[] = {PROG, "maps/invalid/multiple_maps.cub", NULL};
+	t_result res = run_cub3d(argv);
 
 	cr_assert_eq(res.exit_code, 1);
 	cr_assert_str_eq(res.stderr, "Error\nEmpty line in map\n");
@@ -202,9 +223,30 @@ Test(invalid, multiple_maps)
 
 Test(invalid, random_word_arg)
 {
-	t_result res = run_cub3d("lalalala");
+	char *argv[] = {PROG, "lalalala", NULL};
+	t_result res = run_cub3d(argv);
 
 	cr_assert_eq(res.exit_code, 1);
 	cr_assert_str_eq(res.stderr, "Error\nInvalid input format\n");
 	printf("Test: random_word_arg passed ✅\n");
+}
+
+Test(invalid, multiple_map_args)
+{
+	char *argv[] = {PROG, "maps/valid/map.cub", "maps/valid/map.cub", NULL};
+	t_result res = run_cub3d(argv);
+
+	cr_assert_eq(res.exit_code, 1);
+	cr_assert_str_eq(res.stderr, "Error\nInvalid number of arguments\n");
+	printf("Test: multiple_map_args passed ✅\n");
+}
+
+Test(invalid, multiple_map_args_in_one_arg)
+{
+	char *argv[] = {PROG, "maps/valid/map.cub maps/valid/map.cub", NULL};
+	t_result res = run_cub3d(argv);
+
+	cr_assert_eq(res.exit_code, 1);
+	cr_assert_str_eq(res.stderr, "Error\nInvalid input format\n");
+	printf("Test: multiple_map_args_in_one_arg passed ✅\n");
 }
