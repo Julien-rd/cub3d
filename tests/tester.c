@@ -83,7 +83,7 @@ Test(invalid, empty_arg)
 	t_result res = run_cub3d(argv);
 
 	cr_assert_eq(res.exit_code, 1);
-	cr_assert_str_eq(res.stderr, "Error\nInvalid input format\n");
+	cr_assert_str_eq(res.stderr, "Error\nEmpty argument\n");
 	printf("Test: empty_arg passed ✅\n");
 }
 
@@ -253,6 +253,17 @@ Test(invalid, multiple_map_args_in_one_arg)
 	t_result res = run_cub3d(argv);
 
 	cr_assert_eq(res.exit_code, 1);
-	cr_assert_str_eq(res.stderr, "Error\nInvalid input format\n");
+	cr_assert_str_eq(res.stderr, "Error\nSpaces in file name\n");
 	printf("Test: multiple_map_args_in_one_arg passed ✅\n");
 }
+
+Test(invalid, spaces_in_xpm_file)
+{
+	char *argv[] = {VAL, FLAG1, FLAG2, FLAG3, FLAG4, FLAG5, PROG, "maps/invalid/spaces_in_xpm_file.cub", NULL};
+	t_result res = run_cub3d(argv);
+
+	cr_assert_eq(res.exit_code, 1);
+	cr_assert_str_eq(res.stderr, "Error\nWrong texture file\n");
+	printf("Test: spaces_in_xpm_file passed ✅\n");
+}
+

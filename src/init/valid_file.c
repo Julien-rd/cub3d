@@ -6,7 +6,7 @@
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/10 12:29:29 by vmanuyko          #+#    #+#             */
-/*   Updated: 2026/04/15 15:17:00 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2026/04/20 16:24:04 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,21 @@ void	validate_file_extension(char *file_name)
 {
 	char	*ret;
 
-	ret = ft_strnstr(file_name, ".cub", ft_strlen(file_name));
+	if (!file_name || !file_name[0])
+		error_exit("Error\nEmpty argument");
+	ret = ft_strchr(file_name, ' ');
+	if (ret)
+		error_exit("Error\nSpaces in file name");
+	ret = ft_strrchr(file_name, '.');
 	if (!ret)
 		error_exit("Error\nInvalid input format");
-	if (ft_strlen(ret) > 4)
+	if (ft_strlen(ret) != 4 || ft_strncmp(ret, ".cub", 4))
 		error_exit("Error\nInvalid input format");
-	ret = ft_strrchr(file_name, '/');
-	if (ret)
+	if (ft_strlen(file_name) > 5)
 	{
-		if (ft_strlen(ret + 1) < 5)
+		if (ft_strchr(ret -1, '/'))
 			error_exit("Error\nInvalid input format");
 	}
-	if (ft_strlen(file_name) < 5)
+	else
 		error_exit("Error\nInvalid input format");
 }
