@@ -6,7 +6,7 @@
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 17:01:41 by jromann           #+#    #+#             */
-/*   Updated: 2026/04/21 15:47:34 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2026/04/21 16:20:00 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ static void	convert_colors(t_user *user, char **colors, char flag)
 		if (user->floor.red == -1 || user->floor.blue == -1
 			|| user->floor.green == -1)
 			return (free2d(colors), exit_game(user, ERROR,
-					"Invalid colour: F rgb number out of range[0,255]"));
+					"Invalid colour: F rgb not in range[0,255] or missing"));
 	}
 	if (flag == 'C')
 	{
@@ -110,7 +110,7 @@ static void	convert_colors(t_user *user, char **colors, char flag)
 		if (user->ceiling.red == -1 || user->ceiling.blue == -1
 			|| user->ceiling.green == -1)
 			return (free2d(colors), exit_game(user, ERROR,
-					"Invalid colour: C rgb number out of range[0, 255]"));
+					"Invalid colour: C rgb not in range[0,255] or missing"));
 	}
 }
 

@@ -303,3 +303,25 @@ Test(invalid, extra_commas_in_colour)
               "stderr does not start with 'Error\\n'");
 	printf("Test: extra_commas_in_colour passed ✅\n");
 }
+
+Test(invalid, out_of_range_rgb_value)
+{
+	char *argv[] = {VAL, FLAG1, FLAG2, FLAG3, FLAG4, FLAG5, PROG, "maps/invalid/out_of_range_rgb_value.cub", NULL};
+	t_result res = run_cub3d(argv);
+
+	cr_assert_eq(res.exit_code, EXIT_CODE, "valgrind detected leaks");
+	cr_assert(strncmp(res.stderr, "Error\n", 6) == 0,
+              "stderr does not start with 'Error\\n'");
+	printf("Test: out_of_range_rgb_value passed ✅\n");
+}
+
+Test(invalid, empty_rgb_value)
+{
+	char *argv[] = {VAL, FLAG1, FLAG2, FLAG3, FLAG4, FLAG5, PROG, "maps/invalid/empty_rgb_value.cub", NULL};
+	t_result res = run_cub3d(argv);
+
+	cr_assert_eq(res.exit_code, EXIT_CODE, "valgrind detected leaks");
+	cr_assert(strncmp(res.stderr, "Error\n", 6) == 0,
+              "stderr does not start with 'Error\\n'");
+	printf("Test: empty_rgb_value passed ✅\n");
+}

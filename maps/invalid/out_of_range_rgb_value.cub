@@ -4,7 +4,7 @@ WE ./textures/pepe.xpm
 EA ./textures/Wall8.xpm
 
 C 0, 50, 200
-F 100, 100, 100
+F 100, 100, 256
 
 111111
 100101
