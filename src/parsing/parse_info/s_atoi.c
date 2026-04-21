@@ -6,7 +6,7 @@
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/12 16:44:19 by jromann           #+#    #+#             */
-/*   Updated: 2026/04/13 15:37:47 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2026/04/21 12:44:18 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	s_atoi(const char *str)
 	i = 0;
 	sign = 1;
 	return_number = 0;
-	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
+	while ((str[i] >= '\t' && str[i] <= '\r') || str[i] == ' ')
 		i++;
 	if (str[i] == '-' || str[i] == '+')
 	{

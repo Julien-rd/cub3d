@@ -6,7 +6,7 @@
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:30:19 by jromann           #+#    #+#             */
-/*   Updated: 2026/04/15 15:58:05 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2026/04/21 12:56:47 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,35 +14,35 @@
 
 size_t	skip_spaces(char *str)
 {
-	size_t	iter;
+	size_t	i;
 
-	iter = 0;
-	while (str[iter] && str[iter] == ' ')
-		iter++;
-	return (iter);
+	i = 0;
+	while (str[i] && str[i] == ' ')
+		i++;
+	return (i);
 }
 
 void	parse_info(t_user *user)
 {
-	size_t	iter;
+	size_t	i;
 
-	iter = 0;
-	while (user->info[iter])
+	i = 0;
+	while (user->info[i])
 	{
-		if (((ft_strncmp("NO ", user->info[iter], 3) == 0) && (!user->path.no))
-			|| ((ft_strncmp("SO ", user->info[iter], 3) == 0)
-				&& (!user->path.so)) || ((ft_strncmp("WE ", user->info[iter],
+		if (((ft_strncmp("NO ", user->info[i], 3) == 0) && (!user->path.no))
+			|| ((ft_strncmp("SO ", user->info[i], 3) == 0)
+				&& (!user->path.so)) || ((ft_strncmp("WE ", user->info[i],
 						3) == 0) && (!user->path.we)) || ((ft_strncmp("EA ",
-						user->info[iter], 3) == 0) && (!user->path.ea)))
-			extract_line(user, iter);
-		else if ((ft_strncmp("F", user->info[iter], 1) == 0
-				&& user->floor.blue == -1) || (ft_strncmp("C", user->info[iter],
+						user->info[i], 3) == 0) && (!user->path.ea)))
+			extract_line(user, i);
+		else if ((ft_strncmp("F", user->info[i], 1) == 0
+				&& user->floor.blue == -1) || (ft_strncmp("C", user->info[i],
 					1) == 0 && user->ceiling.blue == -1))
-			color_info(user, user->info[iter][0], iter);
-		else if (user->info[iter][skip_spaces(user->info[iter])] == '1')
+			color_info(user, user->info[i][0], i);
+		else if (user->info[i][skip_spaces(user->info[i])] == '1')
 			return ;
 		else
 			exit_game(user, ERROR, "Invalid info in provided file");
-		iter++;
+		i++;
 	}
 }
