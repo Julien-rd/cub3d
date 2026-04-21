@@ -293,3 +293,13 @@ Test(invalid, spaces_in_xpm_file)
 	printf("Test: spaces_in_xpm_file passed ✅\n");
 }
 
+Test(invalid, extra_commas_in_colour)
+{
+	char *argv[] = {VAL, FLAG1, FLAG2, FLAG3, FLAG4, FLAG5, PROG, "maps/invalid/extra_commas_in_colour.cub", NULL};
+	t_result res = run_cub3d(argv);
+
+	cr_assert_eq(res.exit_code, EXIT_CODE, "valgrind detected leaks");
+	cr_assert(strncmp(res.stderr, "Error\n", 6) == 0,
+              "stderr does not start with 'Error\\n'");
+	printf("Test: extra_commas_in_colour passed ✅\n");
+}

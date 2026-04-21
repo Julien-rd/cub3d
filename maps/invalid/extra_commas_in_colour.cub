@@ -3,8 +3,8 @@ SO ./textures/rainbow.xpm
 WE ./textures/pepe.xpm
 EA ./textures/Wall8.xpm
 
-C , 50, 200
-F 100, 100, 100
+C 0, 50, 200
+F 100, 100,, 100
 
 111111
 100101

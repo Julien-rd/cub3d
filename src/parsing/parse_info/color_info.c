@@ -6,7 +6,7 @@
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 17:01:41 by jromann           #+#    #+#             */
-/*   Updated: 2026/04/21 13:19:40 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2026/04/21 15:47:34 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,44 @@
 
 static void	check_2dlen(t_user *user, char **colors)
 {
-	size_t	iter;
+	size_t	i;
 
-	iter = 0;
-	while (colors[iter])
-		iter++;
-	if (iter != 3)
+	i = 0;
+	while (colors[i])
+		i++;
+	if (i != 3)
 		return (free2d(colors), exit_game(user, ERROR,
 				"Invalid colour: more/less than 3 numbers specified"));
+}
+
+static int	check_commas(char *s)
+{
+	char	*ret;
+	char	*tmp;
+	int		i;
+
+	i = 0;
+	ret = ft_strchr(s, ',');
+	while (ret)
+	{
+		tmp = ret + 1;
+		ret = ft_strchr(tmp, ',');
+		i++;
+	}
+	if (i > 2)
+		return (-1);
+	return (0);
 }
 
 static char	**prepare_color_info(t_user *user, size_t pos)
 {
 	char	**colors;
 	char	**trim_colors;
-	size_t	iter;
+	size_t	i;
 
-	iter = 0;
+	i = 0;
+	if (check_commas(&user->info[pos][1]) == -1)
+		exit_game(user, ERROR, "Invalid colour: too many commas detected");
 	colors = ft_split(&user->info[pos][1], ',');
 	if (!colors)
 		exit_game(user, PERROR, "color_info");
@@ -38,13 +59,13 @@ static char	**prepare_color_info(t_user *user, size_t pos)
 	trim_colors = (char **)ft_calloc(sizeof(char *), 4);
 	if (!trim_colors)
 		return (free2d(colors), exit_game(user, PERROR, "color_info"), NULL);
-	while (colors[iter])
+	while (colors[i])
 	{
-		trim_colors[iter] = ft_strtrim(colors[iter], " ");
-		if (!trim_colors[iter])
+		trim_colors[i] = ft_strtrim(colors[i], " ");
+		if (!trim_colors[i])
 			return (free2d(trim_colors), free2d(colors), exit_game(user, PERROR,
 					"color_info"), NULL);
-		iter++;
+		i++;
 	}
 	return (free2d(colors), trim_colors);
 }
