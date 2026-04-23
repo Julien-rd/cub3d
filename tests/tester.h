@@ -9,6 +9,8 @@
 # include <criterion/criterion.h>
 # include <stdio.h>
 
+# define PROG "../cub3D"
+
 typedef struct s_result
 {
 	char	stderr[1024];
@@ -16,7 +18,7 @@ typedef struct s_result
 }	t_result;
 
 int			exec_program(t_result *res, char *const argv[]);
-t_result	run_cub3d(char **argv);
+t_result	run_cub3d(char *args[]);
 void		check_invalid(t_result res);
 
 #endif
