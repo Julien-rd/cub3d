@@ -8,9 +8,10 @@ BONUS_NAME = cub3D_bonus
 INC_DIR = includes
 CFLAGS = -Wall -Wextra -Werror -Ilibft -MMD -g -I$(INC_DIR)
 OBJ_DIR = obj
-LDFLAGS = -L/usr/lib -lmlx -lXext -lX11 -lm -lz
-VPATH = src bonus src/core src/init src/movement src/parsing \
-	src/parsing/create_and_validate_map src/parsing/parse_info src/draw
+# LDFLAGS = -L/usr/lib -lmlx -lXext -lX11 -lm -lz 
+LDFLAGS = -L/usr/local/lib -L/opt/X11/lib -lmlx -lXext -lX11 -lm -lz
+VPATH = src src/core src/init src/movement src/parsing \
+	src/parsing/create_and_validate_map src/parsing/parse_info src/render
 
 TEST_NAME = tester
 TEST_SRC = tests/tests.c tests/exec_program.c \
