@@ -6,7 +6,7 @@
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 15:21:15 by jromann           #+#    #+#             */
-/*   Updated: 2026/03/23 10:04:08 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2026/04/22 19:04:55 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ int	main(int argc, char **argv)
 	t_user	user;
 
 	if (argc != 2)
-		return (ft_putendl_fd("Error\nInvalid number of arguments!", 2), 1);
+		return (ft_putendl_fd("Error\nInvalid number of arguments", 2), 1);
 	init_data(&user);
-	validate_file_extension(argv[1]);
+	validate_file_extension(&user, argv[1]);
 	parse_input(argv[1], &user);
 	init_graphics(&user);
 	start_game(&user);

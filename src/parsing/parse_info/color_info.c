@@ -6,7 +6,7 @@
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 17:01:41 by jromann           #+#    #+#             */
-/*   Updated: 2026/03/13 11:38:56 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2026/04/21 16:20:00 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,44 @@
 
 static void	check_2dlen(t_user *user, char **colors)
 {
-	size_t	iter;
+	size_t	i;
 
-	iter = 0;
-	while (colors[iter])
-		iter++;
-	if (iter != 3)
+	i = 0;
+	while (colors[i])
+		i++;
+	if (i != 3)
 		return (free2d(colors), exit_game(user, ERROR,
-				"Error\nInvalid input!"));
+				"Invalid colour: more/less than 3 numbers specified"));
+}
+
+static int	check_commas(char *s)
+{
+	char	*ret;
+	char	*tmp;
+	int		i;
+
+	i = 0;
+	ret = ft_strchr(s, ',');
+	while (ret)
+	{
+		tmp = ret + 1;
+		ret = ft_strchr(tmp, ',');
+		i++;
+	}
+	if (i > 2)
+		return (-1);
+	return (0);
 }
 
 static char	**prepare_color_info(t_user *user, size_t pos)
 {
 	char	**colors;
 	char	**trim_colors;
-	size_t	iter;
+	size_t	i;
 
-	iter = 0;
+	i = 0;
+	if (check_commas(&user->info[pos][1]) == -1)
+		exit_game(user, ERROR, "Invalid colour: too many commas detected");
 	colors = ft_split(&user->info[pos][1], ',');
 	if (!colors)
 		exit_game(user, PERROR, "color_info");
@@ -38,13 +59,13 @@ static char	**prepare_color_info(t_user *user, size_t pos)
 	trim_colors = (char **)ft_calloc(sizeof(char *), 4);
 	if (!trim_colors)
 		return (free2d(colors), exit_game(user, PERROR, "color_info"), NULL);
-	while (colors[iter])
+	while (colors[i])
 	{
-		trim_colors[iter] = ft_strtrim(colors[iter], " ");
-		if (!trim_colors[iter])
+		trim_colors[i] = ft_strtrim(colors[i], " ");
+		if (!trim_colors[i])
 			return (free2d(trim_colors), free2d(colors), exit_game(user, PERROR,
 					"color_info"), NULL);
-		iter++;
+		i++;
 	}
 	return (free2d(colors), trim_colors);
 }
@@ -57,15 +78,12 @@ static void	validate_colors(t_user *user, char **colors)
 	row = 0;
 	while (colors[row])
 	{
-		if (ft_strlen(colors[row]) > 3)
-			return (free2d(colors), exit_game(user, ERROR,
-					"Error\nInvalid input!"));
 		col = 0;
 		while (colors[row][col])
 		{
 			if (!ft_isdigit(colors[row][col]))
 				return (free2d(colors), exit_game(user, ERROR,
-						"Error\nInvalid input!"));
+						"Invalid colour: non-digit char found in number"));
 			col++;
 		}
 		row++;
@@ -82,7 +100,7 @@ static void	convert_colors(t_user *user, char **colors, char flag)
 		if (user->floor.red == -1 || user->floor.blue == -1
 			|| user->floor.green == -1)
 			return (free2d(colors), exit_game(user, ERROR,
-					"Error\nInvalid input!"));
+					"Invalid colour: F rgb not in range[0,255] or missing"));
 	}
 	if (flag == 'C')
 	{
@@ -92,7 +110,7 @@ static void	convert_colors(t_user *user, char **colors, char flag)
 		if (user->ceiling.red == -1 || user->ceiling.blue == -1
 			|| user->ceiling.green == -1)
 			return (free2d(colors), exit_game(user, ERROR,
-					"Error\nInvalid input!"));
+					"Invalid colour: C rgb not in range[0,255] or missing"));
 	}
 }
 

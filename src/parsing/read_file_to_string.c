@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_file_to_string.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jromann <jromann@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 15:49:34 by jromann           #+#    #+#             */
-/*   Updated: 2026/02/02 18:52:56 by jromann          ###   ########.fr       */
+/*   Updated: 2026/04/15 15:54:49 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,19 +30,6 @@ static char	*ft_realloc(char *in_str, size_t size)
 	}
 	free(in_str);
 	return (ret_str);
-}
-
-static int	s_open(char *file_name)
-{
-	int	fd;
-
-	fd = open(file_name, O_RDONLY);
-	if (fd == -1)
-	{
-		perror("open");
-		exit(1);
-	}
-	return (fd);
 }
 
 static int	s_read(int fd, char *buffer, char *input)
@@ -73,7 +60,7 @@ static void	ft_strcpy(char *input, char *buffer)
 	}
 }
 
-char	*read_file_to_string(char *file_name)
+char	*read_file_to_string(t_user *user, char *file_name)
 {
 	char	buffer[1025];
 	int		fd;
@@ -83,7 +70,9 @@ char	*read_file_to_string(char *file_name)
 
 	input_len = 0;
 	input = NULL;
-	fd = s_open(file_name);
+	fd = open(file_name, O_RDONLY);
+	if (fd == -1)
+		exit_game(user, PERROR, "open");
 	while (1)
 	{
 		bytes_read = s_read(fd, buffer, input);

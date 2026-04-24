@@ -6,7 +6,7 @@
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:36:22 by jromann           #+#    #+#             */
-/*   Updated: 2026/03/12 15:55:21 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2026/04/15 15:57:27 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	check_empty_lines(char *map, char *input, t_user *user)
 		{
 			if (empty_line == true)
 				return (free(input), exit_game(user, ERROR,
-						"Error\nEmpty line in map!"));
+						"Empty line in map"));
 		}
 		while (map[iter] != '\n' && map[iter])
 			iter++;
@@ -69,6 +69,6 @@ size_t	map_exists(char *input, t_user *user)
 			iter++;
 	}
 	free(input);
-	exit_game(user, ERROR, "Error\nNo map found!");
+	exit_game(user, ERROR, "No map found");
 	return (0);
 }

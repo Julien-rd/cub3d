@@ -6,7 +6,7 @@
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 15:18:23 by jromann           #+#    #+#             */
-/*   Updated: 2026/03/24 14:35:24 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2026/04/21 14:32:04 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int		key_press_hook(int keycode, t_user *user);
 void	set_up_hooks(t_user *user);
 
 // valid_file
-void	validate_file_extension(char *file_name);
+void	validate_file_extension(t_user *user, char *file_name);
 
 //*************** INPUT **************//
 
@@ -105,7 +105,7 @@ void	check_extensions(t_user *user, char *path);
 int		parse_input(char *file_name, t_user *user);
 
 // read_file_to_string
-char	*read_file_to_string(char *file_name);
+char	*read_file_to_string(t_user *user, char *file_name);
 
 //*************** RENDER **************//
 

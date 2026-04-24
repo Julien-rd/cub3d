@@ -1,10 +1,10 @@
 SO         ./textures/Wall7.xpm   
 WE ./textures/Wall4.xpm
 NO ./textures/Wall2.xpm
-EA ./textures/Wall8.xpm
+EA./textures/Wall8.xpm
 
 C 0,0,0          
-F 220,1 00,0        
+F 220,100,0        
 
 1111
 1001
@@ -20,4 +20,3 @@ F 220,1 00,0
 1001
 1001
 1111
-

@@ -101,7 +101,7 @@ void	valid_map(t_user *user)
 	while (user->map[i])
 	{
 		if (valid_line(user, i) == 1)
-			exit_game(user, ERROR, "Error\nInvalid input!");
+			exit_game(user, ERROR, "Invalid info in provided file");
 		i++;
 	}
 }

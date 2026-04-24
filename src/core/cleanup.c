@@ -6,7 +6,7 @@
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:14:03 by jromann           #+#    #+#             */
-/*   Updated: 2026/03/27 14:46:51 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2026/04/22 19:03:46 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void	exit_game(t_user *user, int flag, char *msg)
 	}
 	if (flag == PERROR || flag == ERROR)
 	{
+		ft_putendl_fd("Error", 2);
 		if (msg != NULL && flag == PERROR)
 			perror(msg);
 		if (msg != NULL && flag == ERROR)
