@@ -6,7 +6,7 @@
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 15:18:23 by jromann           #+#    #+#             */
-/*   Updated: 2026/03/16 13:31:57 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2026/03/24 14:35:24 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,34 +24,14 @@
 # include <unistd.h>
 
 # define FOV_LEN 0.66
-# define WALL 49
-# define SCREEN_WIDTH 640
-# define SCREEN_HEIGHT 480
-
-# define LEFT 0
-# define RIGHT 1
-
-# define FLOOR 0
-# define CEILING 1
-# define NO 2
-# define SO 3
-# define WE 4
-# define EA 5
+# define SCREEN_WIDTH 800
+# define SCREEN_HEIGHT 600
+# define MOVE_S 0.05
+# define ROT_S 0.02
 
 # define SUCCESS 0
 # define ERROR 1
 # define PERROR 2
-
-# define MOVE_S 0.03
-# define ROT_S 0.01
-
-# define KEY_ESC 65307
-# define KEY_W 119
-# define KEY_A 97
-# define KEY_S 115
-# define KEY_D 100
-# define KEY_ARR_R 65363
-# define KEY_ARR_L 65361
 
 //*************** CORE **************//
 
@@ -130,6 +110,7 @@ char	*read_file_to_string(char *file_name);
 //*************** RENDER **************//
 
 // raycaster
-void	draw_ray(t_user *user);
+void	draw_image(t_user *user);
+void	draw_minimap(t_user *user);
 
 #endif

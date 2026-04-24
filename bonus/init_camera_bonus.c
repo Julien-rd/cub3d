@@ -1,34 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   collision.c                                        :+:      :+:    :+:   */
+/*   init_camera_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/21 16:35:54 by jromann           #+#    #+#             */
-/*   Updated: 2026/03/24 15:49:43 by vmanuyko         ###   ########.fr       */
+/*   Created: 2026/04/14 14:30:19 by vmanuyko          #+#    #+#             */
+/*   Updated: 2026/04/14 14:30:21 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/dda.h"
 
-static bool	is_wall_at(t_user *user, double x, double y)
+void	init_camera(t_camera *cam, t_user *user)
 {
-	return (user->map[(int)y][(int)x] == '1');
-}
+	int	tiles;
 
-bool	check_collision(t_user *user, double x, double y)
-{
-	double	buf;
-
-	buf = 0.1;
-	if (is_wall_at(user, x - buf, y - buf))
-		return (true);
-	if (is_wall_at(user, x + buf, y - buf))
-		return (true);
-	if (is_wall_at(user, x - buf, y + buf))
-		return (true);
-	if (is_wall_at(user, x + buf, y + buf))
-		return (true);
-	return (false);
+	tiles = (MINI_SIZE / MINI_TILE);
+	cam->min.x = (int)user->player.pos.x - tiles / 2;
+	cam->max.x = cam->min.x + tiles;
+	cam->min.y = (int)user->player.pos.y - tiles / 2;
+	cam->max.y = cam->min.y + tiles;
 }

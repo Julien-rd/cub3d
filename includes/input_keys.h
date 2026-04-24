@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   start_game.c                                       :+:      :+:    :+:   */
+/*   input_keys.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/12 08:26:56 by jromann           #+#    #+#             */
-/*   Updated: 2026/04/13 18:16:07 by vmanuyko         ###   ########.fr       */
+/*   Created: 2026/03/17 15:23:03 by vmanuyko          #+#    #+#             */
+/*   Updated: 2026/03/17 15:24:59 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/dda.h"
+#ifndef INPUT_KEYS_H
+# define INPUT_KEYS_H
 
-int	game_loop(t_user *user)
-{
-	move_player(user);
-	ft_bzero(user->tex.img.data, SCREEN_HEIGHT * user->tex.img.line);
-	get_rays(user);
-	draw_image(user);
-	mlx_put_image_to_window(user->mlx, user->mlx_win, user->tex.img.img, 0, 0);
-	return (0);
-}
+# define KEY_ESC 65307
+# define KEY_W 119
+# define KEY_A 97
+# define KEY_S 115
+# define KEY_D 100
+# define KEY_ARR_R 65363
+# define KEY_ARR_L 65361
 
-void	start_game(t_user *user)
+typedef struct s_keys
 {
-	set_up_hooks(user);
-	mlx_loop_hook(user->mlx, game_loop, user);
-	mlx_loop(user->mlx);
-}
+	bool			w;
+	bool			s;
+	bool			a;
+	bool			d;
+	bool			arr_l;
+	bool			arr_r;
+	int				mouse_pos;
+}	t_keys;
+
+#endif

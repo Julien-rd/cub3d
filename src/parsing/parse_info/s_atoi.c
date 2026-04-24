@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   c_atoi.c                                           :+:      :+:    :+:   */
+/*   s_atoi.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jromann <jromann@student.42.fr>            +#+  +:+       +#+        */
+/*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/12 16:44:19 by jromann           #+#    #+#             */
-/*   Updated: 2026/03/12 16:46:42 by jromann          ###   ########.fr       */
+/*   Updated: 2026/04/13 15:37:47 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	s_atoi(const char *str)
 		i++;
 	}
 	return_number *= sign;
-	if(return_number > 255)
-		return -1;
+	if (return_number > 255)
+		return (-1);
 	return (return_number);
 }

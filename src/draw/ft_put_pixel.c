@@ -1,34 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   collision.c                                        :+:      :+:    :+:   */
+/*   ft_put_pixel.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/21 16:35:54 by jromann           #+#    #+#             */
-/*   Updated: 2026/03/24 15:49:43 by vmanuyko         ###   ########.fr       */
+/*   Created: 2026/03/23 12:11:44 by vmanuyko          #+#    #+#             */
+/*   Updated: 2026/03/23 12:11:58 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/dda.h"
 
-static bool	is_wall_at(t_user *user, double x, double y)
+void	ft_put_pixel(int x, int y, t_user *user, unsigned int colour)
 {
-	return (user->map[(int)y][(int)x] == '1');
-}
+	int	pos;
 
-bool	check_collision(t_user *user, double x, double y)
-{
-	double	buf;
-
-	buf = 0.1;
-	if (is_wall_at(user, x - buf, y - buf))
-		return (true);
-	if (is_wall_at(user, x + buf, y - buf))
-		return (true);
-	if (is_wall_at(user, x - buf, y + buf))
-		return (true);
-	if (is_wall_at(user, x + buf, y + buf))
-		return (true);
-	return (false);
+	pos = y * user->tex.img.line + x * (user->tex.img.bpp / 8);
+	*(unsigned int *)(user->tex.img.data + pos) = colour;
 }

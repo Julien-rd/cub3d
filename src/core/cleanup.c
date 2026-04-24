@@ -6,7 +6,7 @@
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:14:03 by jromann           #+#    #+#             */
-/*   Updated: 2026/03/12 15:26:11 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2026/03/27 14:46:51 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 void	free2d(char **str)
 {
-	size_t	iter;
+	size_t	i;
 
-	iter = 0;
+	i = 0;
 	if (!str)
 		return ;
-	while (str[iter])
+	while (str[i])
 	{
-		free(str[iter]);
-		iter++;
+		free(str[i]);
+		i++;
 	}
 	free(str);
 }
@@ -50,9 +50,18 @@ void	cleanup_mlx(t_user *user)
 
 void	exit_game(t_user *user, int flag, char *msg)
 {
+	int	i;
+
+	i = 0;
 	cleanup_mlx(user);
 	free2d(user->info);
 	free2d(user->map);
+	if (user->ray)
+	{
+		while (i < SCREEN_WIDTH)
+			free(user->ray[i++]);
+		free(user->ray);
+	}
 	if (flag == PERROR || flag == ERROR)
 	{
 		if (msg != NULL && flag == PERROR)

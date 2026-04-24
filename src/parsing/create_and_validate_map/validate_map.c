@@ -45,28 +45,28 @@ static void	player_start_pos(t_user *user, size_t pos, size_t i)
 	user->start_dir = user->map[pos][i];
 	if (user->start_dir == 'N')
 	{
-		user->dir_vec.x = 0;
-		user->dir_vec.y = -1;
+		user->player.dir.x = 0;
+		user->player.dir.y = -1;
 	}
 	if (user->start_dir == 'S')
 	{
-		user->dir_vec.x = 0;
-		user->dir_vec.y = 1;
+		user->player.dir.x = 0;
+		user->player.dir.y = 1;
 	}
 	if (user->start_dir == 'W')
 	{
-		user->dir_vec.x = -1;
-		user->dir_vec.y = 0;
+		user->player.dir.x = -1;
+		user->player.dir.y = 0;
 	}
 	if (user->start_dir == 'E')
 	{
-		user->dir_vec.x = 1;
-		user->dir_vec.y = 0;
+		user->player.dir.x = 1;
+		user->player.dir.y = 0;
 	}
-	user->player_pos.x = (double)i + 0.5;
-	user->player_pos.y = (double)pos + 0.5;
-	user->plane_vec.x = -(FOV_LEN * user->dir_vec.y);
-	user->plane_vec.y = FOV_LEN * user->dir_vec.x;
+	user->player.pos.x = (double)i + 0.5;
+	user->player.pos.y = (double)pos + 0.5;
+	user->plane.x = -(FOV_LEN * user->player.dir.y);
+	user->plane.y = FOV_LEN * user->player.dir.x;
 }
 
 static int	valid_line(t_user *user, size_t pos)

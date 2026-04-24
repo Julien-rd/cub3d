@@ -6,7 +6,7 @@
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 15:21:15 by jromann           #+#    #+#             */
-/*   Updated: 2026/03/12 17:52:01 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2026/03/23 10:04:08 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,4 @@ int	main(int argc, char **argv)
 	parse_input(argv[1], &user);
 	init_graphics(&user);
 	start_game(&user);
-	exit_game(&user, SUCCESS, NULL);
 }
