@@ -6,7 +6,7 @@
 /*   By: vmanuyko <vmanuyko@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 16:41:57 by jromann           #+#    #+#             */
-/*   Updated: 2026/03/16 13:26:50 by vmanuyko         ###   ########.fr       */
+/*   Updated: 2026/04/24 16:06:52 by vmanuyko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,6 @@ static int	should_be_a_wall(t_user *user, size_t x, size_t y)
 		return (valid_char(user->map[y][x]));
 	if (user->map[y - 1][x] == ' ' || user->map[y + 1][x] == ' ')
 		return (valid_char(user->map[y][x]));
-	// if (user->map[y - 1][x + 1] == ' ' || user->map[y + 1][x + 1] == ' ')
-	// 	return (valid_char(user->map[y][x]));
-	// if (user->map[y - 1][x - 1] == ' ' || user->map[y + 1][x - 1] == ' ')
-	// 	return (valid_char(user->map[y][x]));
 	if (user->map[y][x - 1] == ' ' || user->map[y][x + 1] == ' ')
 		return (valid_char(user->map[y][x]));
 	return (0);
